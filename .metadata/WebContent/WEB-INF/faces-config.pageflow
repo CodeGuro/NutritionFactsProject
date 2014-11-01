@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14144670007390" configfile="/SixTwelveProject/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="Registration.xhtml" x="144" y="156" id="pf14144672583291" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf14144672583292 pf14144672583293" inlinks="pf14144672583293" path="/Registration.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="RegConfirmation.xhtml" x="336" y="156" id="pf14144672583294" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14144672583292" path="/RegConfirmation.xhtml"/>
-  <links id="pf14144672583292" target="pf14144672583294" source="pf14144672583291" outcome="success" fromaction="#{regBean.addUser}"/>
-  <links id="pf14144672583293" target="pf14144672583291" source="pf14144672583291" outcome="failure" fromaction="#{regBean.addUser}">
-    <bendPoints d1Height="-36" d2Height="-36"/>
-    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
-    <bendPoints d1Width="-64" d2Width="-64"/>
-  </links>
+  <nodes xsi:type="pageflow:PFPage" name="Registration.xhtml" id="pf14148793426528" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf14148793426529 pf141487934265210" inlinks="pf141487934265210" path="/Registration.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="RegConfirmation.xhtml" id="pf141487934265211" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14148793426529" path="/RegConfirmation.xhtml"/>
+  <links id="pf14148793426529" target="pf141487934265211" source="pf14148793426528" outcome="success" fromaction="#{regBean.addUser}"/>
+  <links id="pf141487934265210" target="pf14148793426528" source="pf14148793426528" outcome="failure" fromaction="#{regBean.addUser}"/>
 </pageflow:Pageflow>

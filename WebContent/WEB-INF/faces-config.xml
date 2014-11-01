@@ -4,12 +4,21 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
-	<application>
-		<message-bundle>resources.application</message-bundle>
-		<locale-config>
-			<default-locale>en</default-locale>
-		</locale-config>
-	</application>
+	<managed-bean>
+		<managed-bean-name>regBean</managed-bean-name>
+		<managed-bean-class>resources.RegistrationBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+	<validator>
+	<display-name>Password Validator</display-name>
+	<validator-id>passwordValidator</validator-id>
+	<validator-class>resources.PasswordValidator</validator-class>
+	</validator>
+	<validator>
+		<display-name>Email Validator</display-name>
+		<validator-id>emailValidator</validator-id>
+		<validator-class>resources.EmailValidator</validator-class>
+	</validator>
 	<navigation-rule>
 		<display-name>Registration.xhtml</display-name>
 		<from-view-id>/Registration.xhtml</from-view-id>
@@ -28,5 +37,4 @@
 			<to-view-id>/Registration.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
 </faces-config>

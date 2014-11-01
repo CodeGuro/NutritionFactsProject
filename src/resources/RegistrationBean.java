@@ -1,12 +1,9 @@
 package resources;
 
+import java.util.Date;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean( name = "regBean" )
-@SessionScoped()
 public class RegistrationBean
 {
 	private String username;
@@ -14,7 +11,7 @@ public class RegistrationBean
 	private String confirmpassword;
 	private String firstname;
 	private String lastname;
-	private String dob;
+	private Date dob;
 	private String email;
 	private String confirmemail;
 	private String street;
@@ -76,12 +73,12 @@ public class RegistrationBean
 		this.lastname = lastname;
 	}
 
-	public String getDob()
+	public Date getDob()
 	{
 		return dob;
 	}
 
-	public void setDob( String dob )
+	public void setDob( Date dob )
 	{
 		this.dob = dob;
 	}
@@ -183,22 +180,6 @@ public class RegistrationBean
 
 	public String addUser()
 	{
-		String msg = "";
-		try
-		{
-			if( !this.confirmpassword.equals( this.password ) )
-				msg += "Passwords does not match. ";
-			if( !this.confirmemail.equals( this.email ) )
-				msg += "Emails does not match. ";
-			if( msg.length() > 0 )
-				throw new Exception( msg );
-		}
-		catch( Exception e )
-		{
-			addMessage( new FacesMessage( FacesMessage.SEVERITY_ERROR,
-					"Registration failure. " + msg, null ) );
-			return "failure";
-		}
 		addMessage( new FacesMessage( FacesMessage.SEVERITY_INFO,
 				"User Registration Successful!!!", null ) );
 		return "success";
