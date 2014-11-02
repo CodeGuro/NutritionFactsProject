@@ -1,6 +1,8 @@
 package resources;
 
-import java.sql.Date;
+import java.util.Date;
+
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
@@ -21,6 +23,8 @@ public class RegistrationBean
 	private String province;
 	private String country;
 
+	@EJB
+	RegistrationEAO service;
 	private String[] selectedGroups;
 
 	public String getUsername()
@@ -180,8 +184,14 @@ public class RegistrationBean
 
 	public String addUser()
 	{
-		addMessage( new FacesMessage( FacesMessage.SEVERITY_INFO,
-				"User Registration Successful!!!", null ) );
-		return "success";
+		if( service.persistUser( this ) )
+		{
+			addMessage( new FacesMessage( FacesMessage.SEVERITY_INFO,
+				"User Registration successful!", null ) );
+			return "success";
+		}
+		addMessage( new FacesMessage( FacesMessage.SEVERITY_ERROR,
+			"User Registration failed.", null ) );
+		return "failure";
 	}
 }
