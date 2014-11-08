@@ -9,6 +9,12 @@
 		<managed-bean-class>resources.RegistrationBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<description>A login bean that handles Login.xhtml</description>
+		<managed-bean-name>loginBean</managed-bean-name>
+		<managed-bean-class>resources.LoginBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
@@ -35,6 +41,22 @@
 			<from-action>#{regBean.addUser}</from-action>
 			<from-outcome>failure</from-outcome>
 			<to-view-id>/Registration.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Login.xhtml</display-name>
+		<from-view-id>/Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>failure</from-outcome>
+			<to-view-id>/Login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>Login.xhtml</display-name>
+		<from-view-id>/Login.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/AdminPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

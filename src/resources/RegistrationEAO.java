@@ -8,6 +8,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.faces.validator.ValidatorException;
 
 /**
  * Session Bean implementation class RegistrationEAO
@@ -97,6 +99,26 @@ public class RegistrationEAO
 			e.printStackTrace();
 		}
 
+		return false;
+	}
+
+	public boolean CheckRegisteredUser( String usname, String passwd ) throws ValidatorException
+	{
+		EntityManager em = this.entityManager;
+		
+		@SuppressWarnings( "unchecked" )
+		TypedQuery< User > query =
+			(TypedQuery< User >)em.createNativeQuery( "SELECT * FROM mydb.user WHERE username = \"" 
+			+ usname + "\"", User.class );
+		
+		List< User > users = query.getResultList();
+		
+		for( User user : users )
+		{
+			if( user.getPassword().equals( Util.hash( passwd ) ) )
+				return true;
+		}
+		
 		return false;
 	}
 }

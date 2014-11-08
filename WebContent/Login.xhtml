@@ -10,12 +10,15 @@
 		style="font-size: x-large; font-family: Verdana, Arial, Sans-Serif"></h:outputText>
 	<p></p>
 	<h:panelGroup>
-	<img src="/Italian.jpg" alt="" style="height: 129px; width: 239px;" />
-	<h:outputText value="Welcome to SixTwelve"
+		<h:graphicImage value = "/Italian.jpg" style="height: 130px; width: 240px;" ></h:graphicImage>
+		<h:outputText value="Welcome to SixTwelve"
 		style='font-family: "Comic Sans MS", Sans-Serif; font-size: x-large;'></h:outputText>
 	</h:panelGroup>
 	<br />
-	<br />
+	<br /><h:messages id="errorMessages"
+		style="color: #FF0000; font-size: large; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"
+		errorStyle="color: #FF0000; font-size: large; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"
+		fatalStyle="color: #FF0000; font-size: large; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:messages>
 	<div style="border-left-color: #525252; border-right-color: #525252; border-left-style: solid; border-right-style: solid">
 		<center>
 			<h:form>
@@ -25,14 +28,15 @@
 					<h:panelGrid columns="2">
 						<h:outputText value="Username"
 							style="font-family: Verdana, Arial, Sans-Serif"></h:outputText>
-						<h:inputText></h:inputText>
-	
+						<h:inputText id="username" value="#{loginBean.userName}"></h:inputText>
 						<h:outputText value="Password"
 							style="font-family: Verdana, Arial, Sans-Serif"></h:outputText>
-						<h:inputSecret></h:inputSecret>
-					</h:panelGrid>
-					<h:button value="Submit"
-						style="font-family: Verdana, Arial, Sans-Serif; background-color: #0080FF; color: #FFFFFF"></h:button>
+						<h:inputSecret id="password" value="#{loginBean.userPass}"></h:inputSecret>
+
+						</h:panelGrid>
+					<h:commandButton id="login" action="#{loginBean.login}"
+						style="font-family: Verdana, Arial, Sans-Serif; background-color: #0080FF; color: #FFFFFF"
+						type="submit" value="Submit"></h:commandButton>
 				</div>
 			</h:form>
 		</center>
