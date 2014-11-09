@@ -6,6 +6,10 @@
 		<class>resources.Address</class>
 		<class>resources.Group</class>
 		<class>resources.User</class>
+		<class>resources.Food</class>
+		<class>resources.Ingredient</class>
+		<class>resources.Menu</class>
+		<class>resources.Nutrition</class>
 		<properties>
 			<property name="eclipselink.target-server" value="None"/>
 			<property name="eclipselink.logging.level" value="FINEST"/>
