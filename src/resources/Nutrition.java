@@ -39,7 +39,7 @@ public class Nutrition implements Serializable
 
 	// bi-directional one-to-one association to Ingredient
 	@OneToOne
-	@JoinColumn( name = "nutritionid" )
+	@JoinColumn( name = "nutritionid", insertable =  false, updatable = false )
 	private Ingredient ingredient;
 
 	public Nutrition()

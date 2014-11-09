@@ -5,11 +5,24 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<title>Insert title here</title>
+<title>Administrative Page</title>
 </head>
+<h2>Administrative Page</h2>
 <body>
-<f:view>
-
-</f:view>
+	<h:panelGrid columns="2">
+		<h:selectOneRadio id="editMenusId" layout="lineDirection">
+			<f:selectItem id="editMenusButton" itemLabel="Edit Menus"></f:selectItem>
+		</h:selectOneRadio>
+		<h:outputText value="Create, read, update, and delete the menu items that are displayed on the front page"></h:outputText>
+		
+		<h:selectOneRadio id="editFoodsId">
+			<f:selectItem id="editFoodsButton" itemLabel="Edit Foods"></f:selectItem>
+		</h:selectOneRadio>
+		<h:outputText value="Create, read, update, and delete the predefined foods and their ingredient makeup"></h:outputText>
+		<h:selectOneRadio id="editIngredientsId">
+			<f:selectItem id="editIngredientsButton" itemLabel="Edit Ingredients"></f:selectItem>
+		</h:selectOneRadio>
+		<h:outputText value="Create, read, update, and delete the ingredients listed in the 'build your own' page"></h:outputText>
+	</h:panelGrid>
 </body>
 </html>
