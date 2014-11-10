@@ -15,6 +15,12 @@
 		<managed-bean-class>resources.LoginBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<description>This is the admin session managed bean</description>
+		<managed-bean-name>adminSession</managed-bean-name>
+		<managed-bean-class>resources.AdminSession</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
