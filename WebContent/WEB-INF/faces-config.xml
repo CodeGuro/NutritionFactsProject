@@ -47,6 +47,7 @@
 		<display-name>Login.xhtml</display-name>
 		<from-view-id>/Login.xhtml</from-view-id>
 		<navigation-case>
+			<from-action>#{loginBean.login}</from-action>
 			<from-outcome>failure</from-outcome>
 			<to-view-id>/Login.xhtml</to-view-id>
 		</navigation-case>
@@ -55,8 +56,33 @@
 		<display-name>Login.xhtml</display-name>
 		<from-view-id>/Login.xhtml</from-view-id>
 		<navigation-case>
+			<from-action>#{loginBean.login}</from-action>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/AdminPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AdminPage.xhtml</display-name>
+		<from-view-id>/AdminPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EditMenus</from-outcome>
+			<to-view-id>/MenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AdminPage.xhtml</display-name>
+		<from-view-id>/AdminPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EditFoods</from-outcome>
+			<to-view-id>/FoodsPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>AdminPage.xhtml</display-name>
+		<from-view-id>/AdminPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EditIngredients</from-outcome>
+			<to-view-id>/IngredientsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
