@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the nutrition database table.
+ * 
  */
 @Entity
 @NamedQuery( name = "Nutrition.findAll", query = "SELECT n FROM Nutrition n" )
@@ -18,28 +19,19 @@ public class Nutrition implements Serializable
 
 	private Integer calories;
 
-	private Integer cholesterol;
-
-	@Column( name = "cholesterol_pct" )
-	private Double cholesterolPct;
-
 	private Integer fat;
 
-	@Column( name = "fat_pct" )
-	private Double fatPct;
+	private String name;
 
 	private Integer protein;
 
 	private Integer sodium;
 
-	@Column( name = "sodium_pct" )
-	private Double sodiumPct;
-
-	private Integer sugars;
+	private int sugar;
 
 	// bi-directional one-to-one association to Ingredient
-	@OneToOne
-	@JoinColumn( name = "nutritionid", insertable =  false, updatable = false )
+	@OneToOne( cascade = { CascadeType.ALL } )
+	@PrimaryKeyJoinColumn( name = "nutritionid" )
 	private Ingredient ingredient;
 
 	public Nutrition()
@@ -66,26 +58,6 @@ public class Nutrition implements Serializable
 		this.calories = calories;
 	}
 
-	public Integer getCholesterol()
-	{
-		return this.cholesterol;
-	}
-
-	public void setCholesterol( Integer cholesterol )
-	{
-		this.cholesterol = cholesterol;
-	}
-
-	public Double getCholesterolPct()
-	{
-		return this.cholesterolPct;
-	}
-
-	public void setCholesterolPct( Double cholesterolPct )
-	{
-		this.cholesterolPct = cholesterolPct;
-	}
-
 	public Integer getFat()
 	{
 		return this.fat;
@@ -96,14 +68,14 @@ public class Nutrition implements Serializable
 		this.fat = fat;
 	}
 
-	public Double getFatPct()
+	public String getName()
 	{
-		return this.fatPct;
+		return this.name;
 	}
 
-	public void setFatPct( Double fatPct )
+	public void setName( String name )
 	{
-		this.fatPct = fatPct;
+		this.name = name;
 	}
 
 	public Integer getProtein()
@@ -126,24 +98,14 @@ public class Nutrition implements Serializable
 		this.sodium = sodium;
 	}
 
-	public Double getSodiumPct()
+	public int getSugar()
 	{
-		return this.sodiumPct;
+		return this.sugar;
 	}
 
-	public void setSodiumPct( Double sodiumPct )
+	public void setSugar( int sugar )
 	{
-		this.sodiumPct = sodiumPct;
-	}
-
-	public Integer getSugars()
-	{
-		return this.sugars;
-	}
-
-	public void setSugars( Integer sugars )
-	{
-		this.sugars = sugars;
+		this.sugar = sugar;
 	}
 
 	public Ingredient getIngredient()
@@ -155,4 +117,5 @@ public class Nutrition implements Serializable
 	{
 		this.ingredient = ingredient;
 	}
+
 }

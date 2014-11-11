@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * The persistent class for the groups database table.
+ * 
  */
 @Entity
 @Table( name = "groups" )
@@ -69,4 +70,5 @@ public class Group implements Serializable
 	{
 		this.users = users;
 	}
+
 }

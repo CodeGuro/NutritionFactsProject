@@ -3,13 +3,13 @@
 	<persistence-unit name="SixTwelveProject">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/mydb</jta-data-source>
-		<class>resources.Address</class>
-		<class>resources.Group</class>
-		<class>resources.User</class>
 		<class>resources.Food</class>
 		<class>resources.Ingredient</class>
 		<class>resources.Menu</class>
 		<class>resources.Nutrition</class>
+		<class>resources.Address</class>
+		<class>resources.Group</class>
+		<class>resources.User</class>
 		<properties>
 			<property name="eclipselink.target-server" value="None"/>
 			<property name="eclipselink.logging.level" value="FINEST"/>

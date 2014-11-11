@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * The persistent class for the food database table.
+ * 
  */
 @Entity
 @NamedQuery( name = "Food.findAll", query = "SELECT f FROM Food f" )
@@ -17,14 +18,13 @@ public class Food implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int foodid;
 
-	@Column( name = "`food name`" )
-	private String food_name;
+	private String name;
 
 	private Integer references;
 
 	// bi-directional many-to-one association to Menu
 	@ManyToOne( cascade = { CascadeType.ALL } )
-	@JoinColumn( name = "food_menu_key" )
+	@JoinColumn( name = "keyToMenu" )
 	private Menu menu;
 
 	// bi-directional many-to-one association to Ingredient
@@ -45,14 +45,14 @@ public class Food implements Serializable
 		this.foodid = foodid;
 	}
 
-	public String getFood_name()
+	public String getName()
 	{
-		return this.food_name;
+		return this.name;
 	}
 
-	public void setFood_name( String food_name )
+	public void setName( String name )
 	{
-		this.food_name = food_name;
+		this.name = name;
 	}
 
 	public Integer getReferences()
@@ -100,4 +100,5 @@ public class Food implements Serializable
 
 		return ingredient;
 	}
+
 }

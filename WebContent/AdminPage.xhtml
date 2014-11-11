@@ -11,21 +11,17 @@
 <h2>Administrative Page</h2>
 	<h:panelGrid columns="2" border="1">
 
-		<h:button id="editButton" outcome="EditMenus" value="Edit Menus"></h:button>
-
+		<h:button id="editMenuButton" outcome="EditMenus" value="Edit Menus"></h:button>
 		<h:outputText
 			value="Create, read, update, and delete the menu items that are displayed on the front page"></h:outputText>
-
-		<h:button id="edit Foods" value="Edit Foods" outcome="EditFoods"></h:button>
-
+		
+		<h:button id="editFoodButton" outcome="EditFoods" value="Edit Foods"></h:button>
 		<h:outputText
-			value="Create, read, update, and delete the predefined foods and their ingredient makeup"></h:outputText>
-
-		<h:button id="edit Ingredients" value="Edit Ingredients"
-			outcome="EditIngredients"></h:button>
-		<h:outputText
-			value="Create, read, update, and delete the ingredients listed in the 'build your own' page"></h:outputText>
-
+			value="Create, read, update, and delete the list of foods available and their ingredient makeup"></h:outputText>
+		
+		<h:button id="editIngredientsButton" outcome="EditIngredients" value="Edit Ingredients"></h:button>
+		<h:outputText value="Create, read, update, and delete the ingredients and their nutritions"></h:outputText>
+		
 	</h:panelGrid>
 </body>
 </html>

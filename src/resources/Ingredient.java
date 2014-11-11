@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 /**
  * The persistent class for the ingredient database table.
+ * 
  */
 @Entity
 @NamedQuery( name = "Ingredient.findAll", query = "SELECT i FROM Ingredient i" )
@@ -18,8 +19,7 @@ public class Ingredient implements Serializable
 
 	private String allergen;
 
-	@Column( name = "`ingredient name`" )
-	private String ingredient_name;
+	private String name;
 
 	private Double price;
 
@@ -27,11 +27,11 @@ public class Ingredient implements Serializable
 
 	// bi-directional many-to-one association to Food
 	@ManyToOne
-	@JoinColumn( name = "ingredient_food_key" )
+	@JoinColumn( name = "keyToFood" )
 	private Food food;
 
 	// bi-directional one-to-one association to Nutrition
-	@OneToOne( mappedBy = "ingredient" )
+	@OneToOne( mappedBy = "ingredient", cascade = { CascadeType.ALL } )
 	private Nutrition nutrition;
 
 	public Ingredient()
@@ -58,14 +58,14 @@ public class Ingredient implements Serializable
 		this.allergen = allergen;
 	}
 
-	public String getIngredient_name()
+	public String getName()
 	{
-		return this.ingredient_name;
+		return this.name;
 	}
 
-	public void setIngredient_name( String ingredient_name )
+	public void setName( String name )
 	{
-		this.ingredient_name = ingredient_name;
+		this.name = name;
 	}
 
 	public Double getPrice()
@@ -107,4 +107,5 @@ public class Ingredient implements Serializable
 	{
 		this.nutrition = nutrition;
 	}
+
 }

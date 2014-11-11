@@ -15,8 +15,10 @@ public class PasswordValidator implements Validator
 	{
 		UIInput input = (UIInput)uiComp.getAttributes().get( "password" );
 		String pass = input.getValue().toString();
-		
+
 		if( !pass.equals( val.toString() ) )
-			throw new ValidatorException( new FacesMessage( FacesMessage.SEVERITY_ERROR, "Password fields do not match.", null ) );
+			throw new ValidatorException( new FacesMessage(
+				FacesMessage.SEVERITY_ERROR, "Password fields do not match.",
+				null ) );
 	}
 }

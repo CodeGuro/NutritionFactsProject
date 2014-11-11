@@ -2,11 +2,11 @@ package resources;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 /**
  * The persistent class for the user database table.
+ * 
  */
 @Entity
 @NamedQuery( name = "User.findAll", query = "SELECT u FROM User u" )
@@ -18,8 +18,7 @@ public class User implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private Integer userid;
 
-	@Temporal( TemporalType.DATE )
-	private Date birth;
+	private String birth;
 
 	private String email;
 
@@ -37,8 +36,9 @@ public class User implements Serializable
 
 	// bi-directional many-to-many association to Group
 	@ManyToMany
-	@JoinTable( name = "user_has_groups", joinColumns = { @JoinColumn( name = "User_userid" ) },
-		inverseJoinColumns = { @JoinColumn( name = "Groups_groupid" ) } )
+	@JoinTable( name = "user_has_groups", joinColumns = { @JoinColumn(
+		name = "User_userid" ) }, inverseJoinColumns = { @JoinColumn(
+		name = "Groups_groupid" ) } )
 	private List< Group > groups;
 
 	public User()
@@ -55,12 +55,12 @@ public class User implements Serializable
 		this.userid = userid;
 	}
 
-	public Date getBirth()
+	public String getBirth()
 	{
 		return this.birth;
 	}
 
-	public void setBirth( Date birth )
+	public void setBirth( String birth )
 	{
 		this.birth = birth;
 	}
@@ -134,4 +134,5 @@ public class User implements Serializable
 	{
 		this.groups = groups;
 	}
+
 }

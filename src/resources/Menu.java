@@ -6,9 +6,16 @@ import java.util.List;
 
 /**
  * The persistent class for the menu database table.
+ * 
  */
 @Entity
-@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" )
+//@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" )
+@NamedQueries
+({
+	@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" ),
+	@NamedQuery( name = "Menu.findById", query = "SELECT m FROM Menu m WHERE m.menuid = ?1" ),
+	@NamedQuery( name = "Menu.deleteById", query = "DELETE FROM Menu m WHERE m.menuid = ?1" )
+})
 public class Menu implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -17,8 +24,7 @@ public class Menu implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int menuid;
 
-	@Column( name = "`menu name`" )
-	private String menu_name;
+	private String name;
 
 	// bi-directional many-to-one association to Food
 	@OneToMany( mappedBy = "menu", cascade = { CascadeType.ALL } )
@@ -38,14 +44,14 @@ public class Menu implements Serializable
 		this.menuid = menuid;
 	}
 
-	public String getMenu_name()
+	public String getName()
 	{
-		return this.menu_name;
+		return this.name;
 	}
 
-	public void setMenu_name( String menu_name )
+	public void setName( String name )
 	{
-		this.menu_name = menu_name;
+		this.name = name;
 	}
 
 	public List< Food > getFoods()
@@ -73,4 +79,5 @@ public class Menu implements Serializable
 
 		return food;
 	}
+
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * The persistent class for the address database table.
+ * 
  */
 @Entity
 @NamedQuery( name = "Address.findAll", query = "SELECT a FROM Address a" )
@@ -133,4 +134,5 @@ public class Address implements Serializable
 
 		return user;
 	}
+
 }
