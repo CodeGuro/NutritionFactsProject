@@ -81,7 +81,15 @@ public class AdminSession
 	{
 		Menu menu = new Menu();
 		menu.setName( menuName );
-		resources.persistMenu( menu );
+		if( !resources.persistMenu( menu ) )
+		{
+			FacesContext.getCurrentInstance().addMessage( null,
+				new FacesMessage( FacesMessage.SEVERITY_ERROR, "An error occurred!", null ) );
+			return "createFail";
+		}
+		FacesContext.getCurrentInstance().addMessage( null,
+			new FacesMessage( FacesMessage.SEVERITY_INFO, "New Menu Item \""
+				+ menu.getName() + "\" created!", null ) );
 		return "createSuccess";
 	}
 }

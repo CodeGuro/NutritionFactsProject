@@ -51,9 +51,19 @@ public class AdminResourceEAO
 		return query.getResultList();
 	}
 
-	public void persistMenu( Menu menu )
+	public boolean persistMenu( Menu menu )
 	{
-		em.persist( menu );
+		try
+		{
+			em.persist( menu );
+		}
+		catch( Exception e )
+		{
+			e.printStackTrace();
+			return false;
+		}
+		
+		return true;
 	}
 
 	public void persistFood( Food food )
