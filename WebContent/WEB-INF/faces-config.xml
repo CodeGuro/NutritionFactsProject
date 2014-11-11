@@ -91,4 +91,22 @@
 			<to-view-id>/IngredientsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>MenusPage.xhtml</display-name>
+		<from-view-id>/MenusPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminSession.createNewMenu}</from-action>
+			<from-outcome>createSuccess</from-outcome>
+			<to-view-id>/MenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>MenusPage.xhtml</display-name>
+		<from-view-id>/MenusPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminSession.deleteMenu}</from-action>
+			<from-outcome>delSuccess</from-outcome>
+			<to-view-id>/MenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

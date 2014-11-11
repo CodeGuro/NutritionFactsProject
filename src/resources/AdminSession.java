@@ -82,6 +82,6 @@ public class AdminSession
 		Menu menu = new Menu();
 		menu.setName( menuName );
 		resources.persistMenu( menu );
-		return "success";
+		return "createSuccess";
 	}
 }
