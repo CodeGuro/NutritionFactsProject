@@ -6,25 +6,25 @@
     version="2.2">
 	<managed-bean>
 		<managed-bean-name>regBean</managed-bean-name>
-		<managed-bean-class>resources.RegistrationBean</managed-bean-class>
+		<managed-bean-class>beans.RegistrationBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<description>A login bean that handles Login.xhtml</description>
 		<managed-bean-name>loginBean</managed-bean-name>
-		<managed-bean-class>resources.LoginBean</managed-bean-class>
+		<managed-bean-class>beans.LoginBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<description>This is the admin session managed bean</description>
 		<managed-bean-name>adminSession</managed-bean-name>
-		<managed-bean-class>resources.AdminSession</managed-bean-class>
+		<managed-bean-class>beans.AdminSession</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
-	<validator-class>resources.PasswordValidator</validator-class>
+	<validator-class>beans.PasswordValidator</validator-class>
 	</validator>
 	<validator>
 		<display-name>Email Validator</display-name>

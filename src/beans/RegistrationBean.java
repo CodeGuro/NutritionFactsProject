@@ -1,4 +1,4 @@
-package resources;
+package beans;
 
 import java.util.Date;
 

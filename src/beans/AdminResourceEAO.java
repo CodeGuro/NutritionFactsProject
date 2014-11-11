@@ -1,15 +1,16 @@
-package resources;
+package beans;
 
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.UserTransaction;
+import resources.Food;
+import resources.Ingredient;
+import resources.Menu;
+import resources.Nutrition;
 
 /**
  * Session Bean implementation class AdminResourceEAO

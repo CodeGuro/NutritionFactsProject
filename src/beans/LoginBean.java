@@ -1,4 +1,4 @@
-package resources;
+package beans;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;

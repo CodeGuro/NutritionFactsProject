@@ -1,10 +1,15 @@
-package resources;
+package beans;
 
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+
+import resources.Food;
+import resources.Ingredient;
+import resources.Menu;
+import resources.Nutrition;
 
 public class AdminSession
 {

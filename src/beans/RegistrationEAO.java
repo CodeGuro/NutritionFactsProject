@@ -1,4 +1,4 @@
-package resources;
+package beans;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -11,6 +11,11 @@ import javax.persistence.Query;
 import javax.persistence.RollbackException;
 import javax.persistence.TypedQuery;
 import javax.faces.validator.ValidatorException;
+
+import resources.Address;
+import resources.Group;
+import resources.User;
+import resources.Util;
 
 /**
  * Session Bean implementation class RegistrationEAO
