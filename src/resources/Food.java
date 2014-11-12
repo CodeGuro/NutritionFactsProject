@@ -18,9 +18,9 @@ public class Food implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int foodid;
 
-	private String name;
+	private String foodName;
 
-	private Integer references;
+	private int refCount;
 
 	// bi-directional many-to-one association to Menu
 	@ManyToOne( cascade = { CascadeType.ALL } )
@@ -45,24 +45,24 @@ public class Food implements Serializable
 		this.foodid = foodid;
 	}
 
-	public String getName()
+	public String getFoodName()
 	{
-		return this.name;
+		return this.foodName;
 	}
 
-	public void setName( String name )
+	public void setFoodName( String foodName )
 	{
-		this.name = name;
+		this.foodName = foodName;
 	}
 
-	public Integer getReferences()
+	public int getRefCount()
 	{
-		return this.references;
+		return this.refCount;
 	}
 
-	public void setReferences( Integer references )
+	public void setRefCount( int refCount )
 	{
-		this.references = references;
+		this.refCount = refCount;
 	}
 
 	public Menu getMenu()

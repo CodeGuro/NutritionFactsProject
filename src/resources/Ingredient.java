@@ -19,11 +19,11 @@ public class Ingredient implements Serializable
 
 	private String allergen;
 
-	private String name;
+	private String ingredName;
 
 	private Double price;
 
-	private Integer references;
+	private int refCount;
 
 	// bi-directional many-to-one association to Food
 	@ManyToOne
@@ -58,14 +58,14 @@ public class Ingredient implements Serializable
 		this.allergen = allergen;
 	}
 
-	public String getName()
+	public String getIngredName()
 	{
-		return this.name;
+		return this.ingredName;
 	}
 
-	public void setName( String name )
+	public void setIngredName( String ingredName )
 	{
-		this.name = name;
+		this.ingredName = ingredName;
 	}
 
 	public Double getPrice()
@@ -78,14 +78,14 @@ public class Ingredient implements Serializable
 		this.price = price;
 	}
 
-	public Integer getReferences()
+	public int getRefCount()
 	{
-		return this.references;
+		return this.refCount;
 	}
 
-	public void setReferences( Integer references )
+	public void setRefCount( int refCount )
 	{
-		this.references = references;
+		this.refCount = refCount;
 	}
 
 	public Food getFood()

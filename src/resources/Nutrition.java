@@ -21,7 +21,7 @@ public class Nutrition implements Serializable
 
 	private Integer fat;
 
-	private String name;
+	private String nutritionName;
 
 	private Integer protein;
 
@@ -68,14 +68,14 @@ public class Nutrition implements Serializable
 		this.fat = fat;
 	}
 
-	public String getName()
+	public String getNutritionName()
 	{
-		return this.name;
+		return this.nutritionName;
 	}
 
-	public void setName( String name )
+	public void setNutritionName( String nutritionName )
 	{
-		this.name = name;
+		this.nutritionName = nutritionName;
 	}
 
 	public Integer getProtein()

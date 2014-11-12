@@ -85,7 +85,7 @@ public class AdminSession
 	public String createNewMenu()
 	{
 		Menu menu = new Menu();
-		menu.setName( menuName );
+		menu.setMenuName( menuName );
 		if( !resources.persistMenu( menu ) )
 		{
 			FacesContext.getCurrentInstance().addMessage( null,
@@ -94,7 +94,7 @@ public class AdminSession
 		}
 		FacesContext.getCurrentInstance().addMessage( null,
 			new FacesMessage( FacesMessage.SEVERITY_INFO, "New Menu Item \""
-				+ menu.getName() + "\" created!", null ) );
+				+ menu.getMenuName() + "\" created!", null ) );
 		return "createSuccess";
 	}
 }

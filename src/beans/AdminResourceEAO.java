@@ -6,7 +6,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
 import resources.Food;
 import resources.Ingredient;
 import resources.Menu;
@@ -20,7 +23,7 @@ import resources.Nutrition;
 @SuppressWarnings( "unchecked" )
 public class AdminResourceEAO
 {
-	@PersistenceContext
+	@PersistenceContext( type = PersistenceContextType.TRANSACTION )
 	private EntityManager em;
 
 	public List< Ingredient > getIngredients()
@@ -82,13 +85,17 @@ public class AdminResourceEAO
 		em.persist( nutrition );
 	}
 
+	@Transactional
 	public boolean removeMenu( Integer menuId )
 	{
 		try
 		{
-			TypedQuery< Menu > query = em.createNamedQuery( "Menu.deleteById", Menu.class );
-			query.setParameter( 1, menuId );
-			query.executeUpdate();
+			//TypedQuery< Menu > query = em.createNamedQuery( "Menu.deleteById", Menu.class );
+			//query.setParameter( 1, menuId );
+			//query.executeUpdate();
+			Menu menu = em.find( Menu.class, new Integer( menuId ) );
+			em.remove( menu );
+			
 		/*	TypedQuery< Menu > query = em.createNamedQuery( "Menu.findById", Menu.class );
 			query.setParameter( 1, menuId );
 			List< Menu > menus = query.getResultList();

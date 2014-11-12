@@ -9,13 +9,7 @@ import java.util.List;
  * 
  */
 @Entity
-//@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" )
-@NamedQueries
-({
-	@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" ),
-	@NamedQuery( name = "Menu.findById", query = "SELECT m FROM Menu m WHERE m.menuid = ?1" ),
-	@NamedQuery( name = "Menu.deleteById", query = "DELETE FROM Menu m WHERE m.menuid = ?1" )
-})
+@NamedQuery( name = "Menu.findAll", query = "SELECT m FROM Menu m" )
 public class Menu implements Serializable
 {
 	private static final long serialVersionUID = 1L;
@@ -24,7 +18,7 @@ public class Menu implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int menuid;
 
-	private String name;
+	private String menuName;
 
 	// bi-directional many-to-one association to Food
 	@OneToMany( mappedBy = "menu", cascade = { CascadeType.ALL } )
@@ -44,14 +38,14 @@ public class Menu implements Serializable
 		this.menuid = menuid;
 	}
 
-	public String getName()
+	public String getMenuName()
 	{
-		return this.name;
+		return this.menuName;
 	}
 
-	public void setName( String name )
+	public void setMenuName( String menuName )
 	{
-		this.name = name;
+		this.menuName = menuName;
 	}
 
 	public List< Food > getFoods()
