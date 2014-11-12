@@ -90,29 +90,8 @@ public class AdminResourceEAO
 	{
 		try
 		{
-			//TypedQuery< Menu > query = em.createNamedQuery( "Menu.deleteById", Menu.class );
-			//query.setParameter( 1, menuId );
-			//query.executeUpdate();
 			Menu menu = em.find( Menu.class, new Integer( menuId ) );
 			em.remove( menu );
-			
-		/*	TypedQuery< Menu > query = em.createNamedQuery( "Menu.findById", Menu.class );
-			query.setParameter( 1, menuId );
-			List< Menu > menus = query.getResultList();
-
-			/*for( Menu menu : menus )
-			{
-				if( menu.getMenuid() == menuId )
-				{
-					em.getTransaction().begin();
-					em.remove( menu );
-					em.getTransaction().commit();
-				}
-			}*/
-			
-			//em.remove( menus.get( 0 ) );
-			
-
 		}
 		catch ( Exception e )
 		{
@@ -127,12 +106,11 @@ public class AdminResourceEAO
 		try
 		{
 			Food food = em.find( Food.class, foodId );
-			em.getTransaction().begin();
 			em.remove( food );
-			em.getTransaction().commit();
 		}
 		catch ( Exception e )
 		{
+			e.printStackTrace();
 			return false;
 		}
 		return true;
@@ -143,12 +121,11 @@ public class AdminResourceEAO
 		try
 		{
 			Ingredient ingred = em.find( Ingredient.class, ingredientId );
-			em.getTransaction().begin();
 			em.remove( ingred );
-			em.getTransaction().commit();
 		}
 		catch ( Exception e )
 		{
+			e.printStackTrace();
 			return false;
 		}
 		return true;
