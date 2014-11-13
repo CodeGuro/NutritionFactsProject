@@ -79,6 +79,16 @@ public class Food implements Serializable
 	{
 		return this.ingredients;
 	}
+	
+	public String getListOfIngredsStr()
+	{
+		String res = "";
+		for( Ingredient ing : getIngredients() )
+			if( ing != null )
+				if( ing.getIngredName() != null )
+					res = res + ", " + ing.getIngredName();
+		return res;
+	}
 
 	public void setIngredients( List< Ingredient > ingredients )
 	{
