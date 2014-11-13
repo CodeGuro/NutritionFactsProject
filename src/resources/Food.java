@@ -27,8 +27,8 @@ public class Food implements Serializable
 	@JoinColumn( name = "keyToMenu" )
 	private Menu menu;
 
-	// bi-directional many-to-one association to Ingredient
-	@OneToMany( mappedBy = "food" )
+	// bi-directional many-to-many association to Ingredient
+	@ManyToMany( mappedBy = "foods" )
 	private List< Ingredient > ingredients;
 
 	public Food()
@@ -83,22 +83,6 @@ public class Food implements Serializable
 	public void setIngredients( List< Ingredient > ingredients )
 	{
 		this.ingredients = ingredients;
-	}
-
-	public Ingredient addIngredient( Ingredient ingredient )
-	{
-		getIngredients().add( ingredient );
-		ingredient.setFood( this );
-
-		return ingredient;
-	}
-
-	public Ingredient removeIngredient( Ingredient ingredient )
-	{
-		getIngredients().remove( ingredient );
-		ingredient.setFood( null );
-
-		return ingredient;
 	}
 
 }

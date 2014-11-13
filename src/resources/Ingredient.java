@@ -2,6 +2,7 @@ package resources;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * The persistent class for the ingredient database table.
@@ -25,10 +26,12 @@ public class Ingredient implements Serializable
 
 	private int refCount;
 
-	// bi-directional many-to-one association to Food
-	@ManyToOne
-	@JoinColumn( name = "keyToFood" )
-	private Food food;
+	// bi-directional many-to-many association to Food
+	@ManyToMany
+	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn(
+		name = "ingredient_ingredientid" ) },
+		inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
+	private List< Food > foods;
 
 	// bi-directional one-to-one association to Nutrition
 	@OneToOne( mappedBy = "ingredient", cascade = { CascadeType.ALL } )
@@ -88,14 +91,14 @@ public class Ingredient implements Serializable
 		this.refCount = refCount;
 	}
 
-	public Food getFood()
+	public List< Food > getFoods()
 	{
-		return this.food;
+		return this.foods;
 	}
 
-	public void setFood( Food food )
+	public void setFoods( List< Food > foods )
 	{
-		this.food = food;
+		this.foods = foods;
 	}
 
 	public Nutrition getNutrition()
