@@ -17,41 +17,76 @@
 				<h:outputText value="Ingredient Name"></h:outputText>
 			</f:facet>
 			<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Food Name"></h:outputText>
-			</f:facet>
-			<h:outputText id="food_foodName" value="#{ingred.food.foodName}"></h:outputText>
+			<h:form>
+				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
+				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientName}">
+					<f:setPropertyActionListener
+						target="#{adminIngredientsPageViewBean.ingredId}"
+						value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:form>
 		</h:column>
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="Allergen"></h:outputText>
 			</f:facet>
 			<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Ingredientid"></h:outputText>
-			</f:facet>
-			<h:outputText id="ingredientid" value="#{ingred.ingredientid}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Ref Count"></h:outputText>
-			</f:facet>
-			<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
+			<h:form>
+				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
+				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientAllergen}">
+					<f:setPropertyActionListener
+						target="#{adminIngredientsPageViewBean.ingredId}"
+						value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:form>
+			
 		</h:column>
 		<h:column>
 			<f:facet name="header">
 				<h:outputText value="Price"></h:outputText>
 			</f:facet>
 			<h:outputText id="price" value="#{ingred.price}"></h:outputText>
-		</h:column>		
+			<h:form>
+				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
+				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientPrice}">
+					<f:setPropertyActionListener
+						target="#{adminIngredientsPageViewBean.ingredId}"
+						value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Reference Count"></h:outputText>
+			</f:facet>
+			<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Foods Associated"></h:outputText>
+			</f:facet>
+			<h:outputText id="food_foodName" value="#{ingred.food.foodName}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Action "></h:outputText>
+			</f:facet>
+			<h:form>
+				<h:commandLink value="Delete" action="#{adminIngredientsPageViewBean.deleteIngred}">
+					<f:setPropertyActionListener
+						target="#{adminIngredientsPageViewBean.ingredId}"
+						value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:form>
+		</h:column>
 		<f:facet name="footer">
 		<h:form>
 			<h:outputText value="New Ingredient"></h:outputText>
-			<h:inputText value="#{adminIngredientsPageViewBean.ingredName}"
+			<h:inputText value="#{adminIngredientsPageViewBean.editText}"
 				maxlength="255"></h:inputText>
 			<h:commandButton 
 				id="submitNewMenuButton" value="Submit" action="#{adminIngredientsPageViewBean.createIngred}">

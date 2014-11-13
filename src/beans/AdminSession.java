@@ -1,6 +1,8 @@
 package beans;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import resources.Menu;
 
@@ -28,5 +30,11 @@ public class AdminSession
 	public Menu getWorkingMenu()
 	{
 		return workingMenu;
+	}
+
+	public static void raiseErrorMessage( String str )
+	{
+		FacesContext.getCurrentInstance().addMessage( null,
+			new FacesMessage( FacesMessage.SEVERITY_ERROR, str, null ) );
 	}
 }

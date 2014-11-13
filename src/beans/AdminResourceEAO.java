@@ -20,7 +20,6 @@ import resources.Nutrition;
  */
 @Stateless
 @LocalBean
-@SuppressWarnings( "unchecked" )
 public class AdminResourceEAO
 {
 	@PersistenceContext( type = PersistenceContextType.TRANSACTION )
@@ -34,6 +33,16 @@ public class AdminResourceEAO
 		return query.getResultList();
 	}
 
+	public Ingredient getIngredient( int id )
+	{
+		return em.find( Ingredient.class, id );
+	}
+
+	public void updateIngredient( Ingredient ingredient )
+	{
+		em.merge( ingredient );
+	}
+	
 	public List< Menu > getMenus()
 	{
 		TypedQuery< Menu > query = (TypedQuery< Menu >)em.createNamedQuery(

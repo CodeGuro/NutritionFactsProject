@@ -17,8 +17,53 @@ public class AdminIngredientsPageViewBean
 	private AdminResourceEAO resources;
 	private AdminSession sessionBean;
 	private int ingredId;
-	private String ingredName;
+	private String editText;
+	
+	public void setEditText( String editText )
+	{
+		this.editText = editText;
+	}
+	
+	public String getEditText()
+	{
+		return this.editText;
+	}
 
+	public String editIngredientName()
+	{
+		Ingredient ingred = resources.getIngredient( ingredId );
+		ingred.setIngredName( editText );
+		resources.updateIngredient( ingred );
+		editText = null;
+		return "success";
+	}
+	
+	public String editIngredientAllergen()
+	{
+		Ingredient ingred = resources.getIngredient( ingredId );
+		ingred.setAllergen( editText );
+		resources.updateIngredient( ingred );
+		editText = null;
+		return "success";
+	}
+	
+	public String editIngredientPrice()
+	{
+		try
+		{
+			Ingredient ingred = resources.getIngredient( ingredId );
+			ingred.setPrice( Double.valueOf( editText ) );
+			resources.updateIngredient( ingred );
+			editText = null;
+			return "success";
+		}
+		catch( Exception e )
+		{
+			AdminSession.raiseErrorMessage( "The price must be a real number!" );
+			return "failure";
+		}
+	}
+	
 	public AdminResourceEAO getResources()
 	{
 		return resources;
@@ -43,14 +88,12 @@ public class AdminIngredientsPageViewBean
 	{
 		return resources.getIngredients();
 	}
-
 	
 	public int getIngredId()
 	{
 		return ingredId;
 	}
 
-	
 	public void setIngredId( int ingredId )
 	{
 		this.ingredId = ingredId;
@@ -58,12 +101,7 @@ public class AdminIngredientsPageViewBean
 
 	public String getIngredName()
 	{
-		return ingredName;
-	}
-
-	public void setIngredName( String ingredName )
-	{
-		this.ingredName = ingredName;
+		return this.editText;
 	}
 	
 	public String createIngred()
@@ -72,10 +110,11 @@ public class AdminIngredientsPageViewBean
 		Nutrition nutrition = new Nutrition();
 		nutrition.setIngredient( ingredient );
 		ingredient.setNutrition( nutrition );
-		ingredient.setIngredName( ingredName );
+		ingredient.setIngredName( this.getIngredName() );
 		ingredient.setRefCount( 0 );
 		ingredient.setPrice( 0.0 );
 		resources.persistIngredient( ingredient );
+		this.editText = null;
 		return "success";
 	}
 	
