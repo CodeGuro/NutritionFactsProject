@@ -152,7 +152,7 @@
 		<display-name>FoodsPage.xhtml</display-name>
 		<from-view-id>/FoodsPage.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{adminFoodsPageViewBean.editFood}</from-action>
+			<from-action>#{adminFoodsPageViewBean.prepareNewIngredient}</from-action>
 			<from-outcome>goToEditPage</from-outcome>
 			<to-view-id>/EditFoodsPage.xhtml</to-view-id>
 		</navigation-case>

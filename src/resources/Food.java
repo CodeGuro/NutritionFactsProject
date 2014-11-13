@@ -1,7 +1,10 @@
 package resources;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -78,6 +81,19 @@ public class Food implements Serializable
 	public List< Ingredient > getIngredients()
 	{
 		return this.ingredients;
+	}
+	
+	public List< Ingredient > getUnincludedIngredients( List< Ingredient > list )
+	{
+		List< Ingredient > ingreds = new ArrayList< Ingredient >();
+		
+		for( Ingredient ingred : list )
+		{
+			if( !getIngredients().contains( ingred ) )
+				ingreds.add( ingred );
+		}
+		
+		return ingreds;
 	}
 	
 	public String getListOfIngredsStr()

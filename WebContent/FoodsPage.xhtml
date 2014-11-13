@@ -15,20 +15,31 @@
 
 		<h:column>
 			<f:facet name="header">Food Name</f:facet>
-			#{food.foodName}
+			<h:outputText value="#{food.foodName}"></h:outputText>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ingredients List"></h:outputText>
+			</f:facet>
+			<h:outputText value="#{food.listOfIngredsStr}"></h:outputText>
+			<br/>
+			<h:form>
+				<h:commandLink value="new" action="#{adminFoodsPageViewBean.prepareNewIngredient}">
+					<f:setPropertyActionListener
+						target="#{adminFoodsPageViewBean.foodId}" value="#{food.foodid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:form>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Reference Count</f:facet>
+			<h:outputText value="#{food.refCount}"></h:outputText>
 		</h:column>
 		
 		<h:column>
 			<f:facet name="header">Actions</f:facet>
-			<h:form>
-				<h:commandLink value="Edit" action="#{adminFoodsPageViewBean.editFood}">
-					<f:setPropertyActionListener
-						target="#{adminFoodsPageViewBean.foodId}"
-						value="#{food.foodid}">
-					</f:setPropertyActionListener>
-				</h:commandLink>
-			</h:form>
-			<p/>
 			<h:form>
 				<h:commandLink value="Delete" action="#{adminFoodsPageViewBean.deleteFood}">
 					<f:setPropertyActionListener

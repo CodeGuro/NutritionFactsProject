@@ -69,6 +69,11 @@ public class AdminResourceEAO
 		return query.getResultList();
 	}
 
+	public Food getFood( int id )
+	{
+		return em.find( Food.class, id );
+	}
+	
 	public boolean persistMenu( Menu menu )
 	{
 		try
