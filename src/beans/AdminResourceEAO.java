@@ -29,7 +29,7 @@ public class AdminResourceEAO
 	public List< Ingredient > getIngredients()
 	{
 		TypedQuery< Ingredient > query = (TypedQuery< Ingredient >)em
-			.createNativeQuery( "Ingredient.findAll",
+			.createNamedQuery( "Ingredient.findAll",
 				Ingredient.class );
 		return query.getResultList();
 	}
@@ -49,13 +49,13 @@ public class AdminResourceEAO
 	public List< Nutrition > getNutritions()
 	{
 		TypedQuery< Nutrition > query = (TypedQuery< Nutrition >)em
-			.createNativeQuery( "Nutrition.findAll", Nutrition.class );
+			.createNamedQuery( "Nutrition.findAll", Nutrition.class );
 		return query.getResultList();
 	}
 
 	public List< Food > getFoods()
 	{
-		TypedQuery< Food > query = (TypedQuery< Food >)em.createNativeQuery(
+		TypedQuery< Food > query = (TypedQuery< Food >)em.createNamedQuery(
 			"Food.findAll", Food.class );
 		return query.getResultList();
 	}

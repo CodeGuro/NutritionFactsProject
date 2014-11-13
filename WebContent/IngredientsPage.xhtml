@@ -8,7 +8,58 @@
 <title>Administrative Page - Edit Foods</title>
 </head>
 <body>
-<h2>Edit Foods</h2>
+<h2>Administrative Page - Ingredients</h2>
+<h:messages/>
+	<h:dataTable var="ingred"
+		value="#{adminIngredientsPageViewBean.ingredients}" border="1">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ingredient Name"></h:outputText>
+			</f:facet>
+			<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Food Name"></h:outputText>
+			</f:facet>
+			<h:outputText id="food_foodName" value="#{ingred.food.foodName}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Allergen"></h:outputText>
+			</f:facet>
+			<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ingredientid"></h:outputText>
+			</f:facet>
+			<h:outputText id="ingredientid" value="#{ingred.ingredientid}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ref Count"></h:outputText>
+			</f:facet>
+			<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Price"></h:outputText>
+			</f:facet>
+			<h:outputText id="price" value="#{ingred.price}"></h:outputText>
+		</h:column>		
+		<f:facet name="footer">
+		<h:form>
+			<h:outputText value="New Ingredient"></h:outputText>
+			<h:inputText value="#{adminIngredientsPageViewBean.ingredName}"
+				maxlength="255"></h:inputText>
+			<h:commandButton 
+				id="submitNewMenuButton" value="Submit" action="#{adminIngredientsPageViewBean.createIngred}">
+			</h:commandButton>
+		</h:form>
+			
+		</f:facet>
+	</h:dataTable>
 
 </body>
 </html>

@@ -31,6 +31,26 @@
 			<value>#{adminSession}</value>
 		</managed-property>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminFoodsPageViewBean</managed-bean-name>
+		<managed-bean-class>beans.AdminFoodsPageViewBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>sessionBean</property-name>
+			<property-class>beans.AdminSession</property-class>
+			<value>#{adminSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminIngredientsPageViewBean</managed-bean-name>
+		<managed-bean-class>beans.AdminIngredientsPageViewBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>sessionBean</property-name>
+			<property-class>beans.AdminSession</property-class>
+			<value>#{adminSession}</value>
+		</managed-property>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
@@ -126,6 +146,33 @@
 			<from-action>#{adminMenusPageViewBean.editMenu}</from-action>
 			<from-outcome>goToEditPage</from-outcome>
 			<to-view-id>/EditMenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodsPage.xhtml</display-name>
+		<from-view-id>/FoodsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminFoodsPageViewBean.editFood}</from-action>
+			<from-outcome>goToEditPage</from-outcome>
+			<to-view-id>/EditFoodsPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodsPage.xhtml</display-name>
+		<from-view-id>/FoodsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminFoodsPageViewBean.createFood}</from-action>
+			<from-outcome>createSuccess</from-outcome>
+			<to-view-id>/FoodsPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodsPage.xhtml</display-name>
+		<from-view-id>/FoodsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminFoodsPageViewBean.deleteFood}</from-action>
+			<from-outcome>delSuccess</from-outcome>
+			<to-view-id>/FoodsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>
