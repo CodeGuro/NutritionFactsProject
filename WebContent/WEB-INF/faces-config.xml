@@ -21,6 +21,16 @@
 		<managed-bean-class>beans.AdminSession</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminMenusPageViewBean</managed-bean-name>
+		<managed-bean-class>beans.AdminMenusPageViewBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>adminSession</property-name>
+			<property-class>beans.AdminSession</property-class>
+			<value>#{adminSession}</value>
+		</managed-property>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
@@ -95,7 +105,7 @@
 		<display-name>MenusPage.xhtml</display-name>
 		<from-view-id>/MenusPage.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{adminSession.createNewMenu}</from-action>
+			<from-action>#{adminMenusPageViewBean.createNewMenu}</from-action>
 			<from-outcome>createSuccess</from-outcome>
 			<to-view-id>/MenusPage.xhtml</to-view-id>
 		</navigation-case>
@@ -104,9 +114,18 @@
 		<display-name>MenusPage.xhtml</display-name>
 		<from-view-id>/MenusPage.xhtml</from-view-id>
 		<navigation-case>
-			<from-action>#{adminSession.deleteMenu}</from-action>
+			<from-action>#{adminMenusPageViewBean.deleteMenu}</from-action>
 			<from-outcome>delSuccess</from-outcome>
 			<to-view-id>/MenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>MenusPage.xhtml</display-name>
+		<from-view-id>/MenusPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminMenusPageViewBean.editMenu}</from-action>
+			<from-outcome>goToEditPage</from-outcome>
+			<to-view-id>/EditMenusPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

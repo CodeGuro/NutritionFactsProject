@@ -10,7 +10,7 @@
 <body>
 	<h2>Administrative Page - Menus</h2>
 	<h:messages id="messagesId"></h:messages>
-	<h:dataTable id="menuTable" var="menuItem" value="#{adminSession.menus}" border="1">
+	<h:dataTable id="menuTable" var="menuItem" value="#{adminMenusPageViewBean.menus}" border="1">
 		<h:column>
 			<f:facet name="header">Menu Name</f:facet>
 			#{menuItem.menuName}
@@ -18,8 +18,14 @@
 		<h:column>
 		<f:facet name="header">Action</f:facet>
 			<h:form>
-				<h:commandLink value="Delete" action="#{adminSession.deleteMenu}">
-				 	<f:setPropertyActionListener target="#{adminSession.menuId}" value="#{menuItem.menuid}"></f:setPropertyActionListener>
+				<h:commandLink value="Edit" action="#{adminMenusPageViewBean.editMenu}">
+					<f:setPropertyActionListener
+						target="#{adminMenusPageViewBean.menuId}"
+						value="#{menuItem.menuid}"></f:setPropertyActionListener>
+				</h:commandLink>
+				<p/>
+				<h:commandLink value="Delete" action="#{adminMenusPageViewBean.deleteMenu}">
+				 	<f:setPropertyActionListener target="#{adminMenusPageViewBean.menuId}" value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				 </h:commandLink>
 	    	</h:form>
 		</h:column>
@@ -27,9 +33,9 @@
 			<h:form id="newMenuForm">
 				<h:outputText id="newMenuLabel" value="New Menu"></h:outputText>
 		
-				<h:inputText id="newMenuInputText" value="#{adminSession.menuName}"
+				<h:inputText id="newMenuInputText" value="#{adminMenusPageViewBean.menuName}"
 					maxlength="255"></h:inputText>
-				<h:commandButton id="submitNewMenuButton" value="Submit" action="#{adminSession.createNewMenu}"></h:commandButton>
+				<h:commandButton id="submitNewMenuButton" value="Submit" action="#{adminMenusPageViewBean.createNewMenu}"></h:commandButton>
 			</h:form>
 		</f:facet>
 	</h:dataTable>

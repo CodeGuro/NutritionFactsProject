@@ -40,6 +40,11 @@ public class AdminResourceEAO
 			"Menu.findAll", Menu.class );
 		return query.getResultList();
 	}
+	
+	public Menu getMenu( int id )
+	{
+		return em.find( Menu.class, id );
+	}
 
 	public List< Nutrition > getNutritions()
 	{
