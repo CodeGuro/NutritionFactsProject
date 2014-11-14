@@ -11,96 +11,110 @@
 <h2>Edit Foods Page</h2>
 
 <h:messages/>
-	<h:dataTable var="ingred"
-		value="#{adminFoodsPageViewBean.currentFoodIngredientsList}" border="1">
-
-		<f:facet name="header"><h:outputText value="Included Ingredients"/></f:facet>
-		
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Action "></h:outputText>
-			</f:facet>
-			<h:commandLink value="Remove"></h:commandLink>
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Ingredient Name"></h:outputText>
-			</f:facet>
-			<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Allergen"></h:outputText>
-			</f:facet>
-			<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Price"></h:outputText>
-			</f:facet>
-			<h:outputText id="price" value="#{ingred.price}"></h:outputText>
-			
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Reference Count"></h:outputText>
-			</f:facet>
-			<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Foods Associated"></h:outputText>
-			</f:facet>
-			<h:outputText id="food_foodName" value="#{ingred.listOfFoodsStr}"></h:outputText>
-		</h:column>
-	</h:dataTable>
+	<h:form>
+		<h:dataTable var="ingred"
+			value="#{adminFoodsPageViewBean.currentFoodIngredientsList}" border="1">
 	
+			<f:facet name="header"><h:outputText value="Included Ingredients"/></f:facet>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Action "></h:outputText>
+				</f:facet>
+				<h:commandLink value="Remove" action="#{adminFoodsPageViewBean.removeOldIngredient}">
+					<f:setPropertyActionListener
+						target="#{adminFoodsPageViewBean.ingredId}" value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ingredient Name"></h:outputText>
+				</f:facet>
+				<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Allergen"></h:outputText>
+				</f:facet>
+				<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Price"></h:outputText>
+				</f:facet>
+				<h:outputText id="price" value="#{ingred.price}"></h:outputText>
+				
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Reference Count"></h:outputText>
+				</f:facet>
+				<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Foods Associated"></h:outputText>
+				</f:facet>
+				<h:outputText id="food_foodName" value="#{ingred.listOfFoodsStr}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 	<p/>
 	<p/>
 	
-	<h:dataTable var="ingred"
-		value="#{adminFoodsPageViewBean.currentFoodIngredientsInvList}" border="1">
+	<h:form>
+		<h:dataTable var="ingred"
+			value="#{adminFoodsPageViewBean.currentFoodIngredientsInvList}" border="1">
+			<f:facet name="header">
+				<h:outputText value="Omitted Ingredients"/>
+			</f:facet>
+				
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Action "></h:outputText>
+				</f:facet>
+				<h:commandLink value="Add" action="#{adminFoodsPageViewBean.addNewIngredient}">
+					<f:setPropertyActionListener
+						target="#{adminFoodsPageViewBean.ingredId}" value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
+			</h:column>
 			
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Action "></h:outputText>
-			</f:facet>
-			<h:commandLink value="Add"></h:commandLink>
-		</h:column>
-		
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Ingredient Name"></h:outputText>
-			</f:facet>
-			<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Allergen"></h:outputText>
-			</f:facet>
-			<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Price"></h:outputText>
-			</f:facet>
-			<h:outputText id="price" value="#{ingred.price}"></h:outputText>
-			
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Reference Count"></h:outputText>
-			</f:facet>
-			<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
-		</h:column>
-		<h:column>
-			<f:facet name="header">
-				<h:outputText value="Foods Associated"></h:outputText>
-			</f:facet>
-			<h:outputText id="food_foodName" value="#{ingred.listOfFoodsStr}"></h:outputText>
-		</h:column>
-	</h:dataTable>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ingredient Name"></h:outputText>
+				</f:facet>
+				<h:outputText id="ingredName" value="#{ingred.ingredName}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Allergen"></h:outputText>
+				</f:facet>
+				<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Price"></h:outputText>
+				</f:facet>
+				<h:outputText id="price" value="#{ingred.price}"></h:outputText>
+				
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Reference Count"></h:outputText>
+				</f:facet>
+				<h:outputText id="refCount" value="#{ingred.refCount}"></h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Foods Associated"></h:outputText>
+				</f:facet>
+				<h:outputText id="food_foodName" value="#{ingred.listOfFoodsStr}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 
 
 </body>

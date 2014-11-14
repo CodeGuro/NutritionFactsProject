@@ -85,24 +85,36 @@ public class Food implements Serializable
 	
 	public List< Ingredient > getUnincludedIngredients( List< Ingredient > list )
 	{
-		List< Ingredient > ingreds = new ArrayList< Ingredient >();
+		List< Ingredient > result = new ArrayList< Ingredient >();
+		List< Ingredient > myingreds = this.getIngredients();
 		
 		for( Ingredient ingred : list )
 		{
-			if( !getIngredients().contains( ingred ) )
-				ingreds.add( ingred );
+			boolean addToRes = true;
+			for( Ingredient myIng : myingreds )
+			{
+				if( myIng.getIngredientid() == ingred.getIngredientid() )
+				{
+					addToRes = false;
+					break;
+				}
+			}
+			if( addToRes )
+				result.add( ingred );
 		}
 		
-		return ingreds;
+		return result;
 	}
 	
 	public String getListOfIngredsStr()
 	{
+		String delim = "";
 		String res = "";
-		for( Ingredient ing : getIngredients() )
-			if( ing != null )
-				if( ing.getIngredName() != null )
-					res = res + ", " + ing.getIngredName();
+		for( Ingredient ingred : this.getIngredients() )
+		{
+			res += delim + res + ingred.getIngredName();
+			delim = ", ";
+		}
 		return res;
 	}
 

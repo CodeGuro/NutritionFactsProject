@@ -14,6 +14,7 @@ public class AdminFoodsPageViewBean
 	private AdminSession sessionBean;
 	private String foodName;
 	private int foodId;
+	private int ingredId;
 
 	public AdminResourceEAO getResources()
 	{
@@ -50,31 +51,37 @@ public class AdminFoodsPageViewBean
 		return this.sessionBean.getWorkingFood()
 			.getUnincludedIngredients( this.getResources().getIngredients() );
 	}
-
 	
 	public String getFoodName()
 	{
 		return foodName;
 	}
-
 	
 	public void setFoodName( String foodName )
 	{
 		this.foodName = foodName;
 	}
-
 	
 	public int getFoodId()
 	{
 		return foodId;
 	}
-
 	
 	public void setFoodId( int foodId )
 	{
 		this.foodId = foodId;
 	}
 	
+	public int getIngredId()
+	{
+		return ingredId;
+	}
+
+	public void setIngredId( int ingredId )
+	{
+		this.ingredId = ingredId;
+	}
+
 	public String createFood()
 	{
 		Food food = new Food();
@@ -99,5 +106,48 @@ public class AdminFoodsPageViewBean
 	{
 		sessionBean.setWorkingFood( resources.getFood( foodId ) );
 		return "goToEditPage";
+	}
+
+	public String addNewIngredient()
+	{
+		Food food = sessionBean.getWorkingFood();
+		
+		resources.updateFood( food );
+		for( Ingredient ingred : resources.getIngredients() )
+		{
+			if( ingred.getIngredientid() == ingredId )
+			{
+				ingred.getFoods().add( food );
+				food.getIngredients().add( ingred );
+				resources.updateFood( food );
+				resources.updateIngredient( ingred );
+				break;
+			}
+		}
+		sessionBean.setWorkingFood( food );
+		
+		return "addIngSuccess";
+	}
+	
+	public String removeOldIngredient()
+	{
+		
+		Food food = sessionBean.getWorkingFood();
+		
+
+		for( Ingredient ingred : food.getIngredients() )
+		{
+			if( ingred.getIngredientid() == ingredId )
+			{
+				ingred.getFoods().remove( food );
+				food.getIngredients().remove( ingred );
+				resources.updateFood( food );
+				resources.updateIngredient( ingred );
+				sessionBean.setWorkingFood( food );
+				break;
+			}
+		}
+		
+		return "remIngSuccess";
 	}
 }

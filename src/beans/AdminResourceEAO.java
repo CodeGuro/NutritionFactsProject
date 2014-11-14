@@ -93,6 +93,11 @@ public class AdminResourceEAO
 	{
 		em.persist( food );
 	}
+	
+	public void updateFood( Food food )
+	{
+		em.merge( food );
+	}
 
 	public void persistIngredient( Ingredient ingredient )
 	{
