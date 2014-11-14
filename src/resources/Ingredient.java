@@ -99,10 +99,16 @@ public class Ingredient implements Serializable
 	public String getListOfFoodsStr()
 	{
 		String res = "";
+		String delim = "";
 		for( Food food : getFoods() )
+		{
 			if( food != null )
 				if( food.getFoodName() != null )
-					res = res + ", " + food.getFoodName();
+				{
+					res += delim + food.getFoodName();
+					delim = ", ";
+				}
+		}
 		return res;
 	}
 

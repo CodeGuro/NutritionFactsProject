@@ -175,4 +175,36 @@
 			<to-view-id>/FoodsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>EditFoodsPage.xhtml</display-name>
+		<from-view-id>/EditFoodsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/FoodsPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodsPage.xhtml</display-name>
+		<from-view-id>/FoodsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/AdminPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>IngredientsPage.xhtml</display-name>
+		<from-view-id>/IngredientsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/AdminPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>MenusPage.xhtml</display-name>
+		<from-view-id>/MenusPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/AdminPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

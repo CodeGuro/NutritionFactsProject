@@ -9,8 +9,10 @@
 </head>
 <body>
 <h2>Edit Foods Page</h2>
-
+<h:button id="editMenuButton" outcome="Return" value="Return"></h:button> <br/>
 <h:messages/>
+	<br/>
+	<h:outputText value="Ingredients for #{adminSession.workingFood.foodName}" />
 	<h:form>
 		<h:dataTable var="ingred"
 			value="#{adminFoodsPageViewBean.currentFoodIngredientsList}" border="1">

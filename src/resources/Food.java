@@ -112,7 +112,7 @@ public class Food implements Serializable
 		String res = "";
 		for( Ingredient ingred : this.getIngredients() )
 		{
-			res += delim + res + ingred.getIngredName();
+			res += delim + ingred.getIngredName();
 			delim = ", ";
 		}
 		return res;

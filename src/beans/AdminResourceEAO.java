@@ -24,6 +24,11 @@ public class AdminResourceEAO
 {
 	@PersistenceContext( type = PersistenceContextType.TRANSACTION )
 	private EntityManager em;
+	
+	public void refresh()
+	{
+		em.getEntityManagerFactory().getCache().evictAll();
+	}
 
 	public List< Ingredient > getIngredients()
 	{
@@ -97,11 +102,13 @@ public class AdminResourceEAO
 	public void updateFood( Food food )
 	{
 		em.merge( food );
+		refresh();
 	}
 
 	public void persistIngredient( Ingredient ingredient )
 	{
 		em.persist( ingredient );
+		refresh();
 	}
 
 	public void persistNutrition( Nutrition nutrition )
@@ -116,6 +123,7 @@ public class AdminResourceEAO
 		{
 			Menu menu = em.find( Menu.class, new Integer( menuId ) );
 			em.remove( menu );
+			refresh();
 		}
 		catch ( Exception e )
 		{
@@ -131,6 +139,7 @@ public class AdminResourceEAO
 		{
 			Food food = em.find( Food.class, foodId );
 			em.remove( food );
+			refresh();
 		}
 		catch ( Exception e )
 		{
@@ -146,6 +155,7 @@ public class AdminResourceEAO
 		{
 			Ingredient ingred = em.find( Ingredient.class, ingredientId );
 			em.remove( ingred );
+			refresh();
 		}
 		catch ( Exception e )
 		{

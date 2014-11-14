@@ -40,13 +40,11 @@ public class AdminSession
 			new FacesMessage( FacesMessage.SEVERITY_ERROR, str, null ) );
 	}
 
-	
 	public Food getWorkingFood()
 	{
 		return workingFood;
 	}
 
-	
 	public void setWorkingFood( Food workingFood )
 	{
 		this.workingFood = workingFood;

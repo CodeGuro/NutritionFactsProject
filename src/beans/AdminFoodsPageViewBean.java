@@ -111,8 +111,6 @@ public class AdminFoodsPageViewBean
 	public String addNewIngredient()
 	{
 		Food food = sessionBean.getWorkingFood();
-		
-		resources.updateFood( food );
 		for( Ingredient ingred : resources.getIngredients() )
 		{
 			if( ingred.getIngredientid() == ingredId )
@@ -133,8 +131,6 @@ public class AdminFoodsPageViewBean
 	{
 		
 		Food food = sessionBean.getWorkingFood();
-		
-
 		for( Ingredient ingred : food.getIngredients() )
 		{
 			if( ingred.getIngredientid() == ingredId )
