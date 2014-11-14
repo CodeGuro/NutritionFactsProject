@@ -51,6 +51,16 @@
 			<value>#{adminSession}</value>
 		</managed-property>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminNutritionBean</managed-bean-name>
+		<managed-bean-class>beans.AdminNutritionalFactsPageViewBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>sessionBean</property-name>
+			<property-class>beans.AdminSession</property-class>
+			<value>#{adminSession}</value>
+		</managed-property>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>
@@ -205,6 +215,23 @@
 		<navigation-case>
 			<from-outcome>Return</from-outcome>
 			<to-view-id>/AdminPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>IngredientsPage.xhtml</display-name>
+		<from-view-id>/IngredientsPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{adminIngredientsPageViewBean.editNutritions}</from-action>
+			<from-outcome>goToEditPage</from-outcome>
+			<to-view-id>/EditNutritionalPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>EditNutritionalPage.xhtml</display-name>
+		<from-view-id>/EditNutritionalPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/IngredientsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

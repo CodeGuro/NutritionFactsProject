@@ -5,7 +5,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 
 import resources.Food;
+import resources.Ingredient;
 import resources.Menu;
+import resources.Nutrition;
 
 public class AdminSession
 {
@@ -13,6 +15,7 @@ public class AdminSession
 	private AdminResourceEAO resources;
 	private Menu workingMenu;
 	private Food workingFood;
+	private Ingredient workingIngredient;
 
 	public AdminResourceEAO getResources()
 	{
@@ -48,5 +51,26 @@ public class AdminSession
 	public void setWorkingFood( Food workingFood )
 	{
 		this.workingFood = workingFood;
+	}
+
+	public Ingredient getWorkingIngredient()
+	{
+		return workingIngredient;
+	}
+
+	public void setWorkingIngredient( Ingredient workingIngredient )
+	{
+		this.workingIngredient = workingIngredient;
+	}
+	
+	public Nutrition getWorkingNutrition()
+	{
+		return this.workingIngredient.getNutrition();
+	}
+
+	public static void raiseInfoMessage( String string )
+	{
+		FacesContext.getCurrentInstance().addMessage( null,
+			new FacesMessage( FacesMessage.SEVERITY_INFO, string, null ) );
 	}
 }

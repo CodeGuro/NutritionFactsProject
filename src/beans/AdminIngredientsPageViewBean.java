@@ -104,6 +104,12 @@ public class AdminIngredientsPageViewBean
 		return this.editText;
 	}
 	
+	public String editNutritions()
+	{
+		sessionBean.setWorkingIngredient( resources.getIngredient( ingredId ) );
+		return "goToEditPage";
+	}
+	
 	public String createIngred()
 	{
 		Ingredient ingredient = new Ingredient();

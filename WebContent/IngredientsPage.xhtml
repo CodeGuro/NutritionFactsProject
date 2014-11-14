@@ -81,6 +81,13 @@
 						value="#{ingred.ingredientid}">
 					</f:setPropertyActionListener>
 				</h:commandLink>
+				<p/>
+				<h:commandLink value="Edit Nutrition Facts" action="#{adminIngredientsPageViewBean.editNutritions}">
+					<f:setPropertyActionListener
+						target="#{adminIngredientsPageViewBean.ingredId}"
+						value="#{ingred.ingredientid}">
+					</f:setPropertyActionListener>
+				</h:commandLink>
 			</h:form>
 		</h:column>
 		<f:facet name="footer">

@@ -6,9 +6,10 @@
   <nodes xsi:type="pageflow:PFPage" name="AdminPage.xhtml" x="266" y="192" id="pf14154034979873" referenceLink="//@navigationRule.16/@navigationCase.0/@toViewId|" outlinks="pf14155794882501 pf14155838298102 pf14155838298103" inlinks="pf14154034979872 pf14159947329350 pf14159949289042 pf14159949289043" path="/AdminPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="MenusPage.xhtml" x="526" y="84" id="pf14155764248643" referenceLink="//@navigationRule.16/@fromViewId|" outlinks="pf14156705150360 pf14156705150361 pf14158359529270 pf14159949289043" inlinks="pf14155794882501 pf14156705150360 pf14156705150361" path="/MenusPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="FoodsPage.xhtml" x="528" y="192" id="pf14155767780246" referenceLink="//@navigationRule.14/@fromViewId|" outlinks="pf14158490239440 pf14158491075662 pf14158491075663 pf14159947329350" inlinks="pf14155838298102 pf14158491075662 pf14158491075663 pf14159947329351" path="/FoodsPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="IngredientsPage.xhtml" x="515" y="300" id="pf14155767780247" referenceLink="//@navigationRule.15/@fromViewId|" outlinks="pf14159949289042" inlinks="pf14155838298103" path="/IngredientsPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="IngredientsPage.xhtml" x="515" y="300" id="pf14155767780247" referenceLink="//@navigationRule.18/@navigationCase.0/@toViewId|" outlinks="pf14159949289042 pf14159987740830" inlinks="pf14155838298103 pf14160004027252" path="/IngredientsPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditMenusPage.xhtml" x="672" y="84" id="pf14158359529271" referenceLink="//@navigationRule.9/@navigationCase.0/@toViewId|" inlinks="pf14158359529270" path="/EditMenusPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditFoodsPage.xhtml" x="674" y="192" id="pf14158490239441" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf14159947329351" inlinks="pf14158490239440" path="/EditFoodsPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="EditNutritionalPage.xhtml" x="672" y="300" id="pf14159987740831" referenceLink="//@navigationRule.18/@fromViewId|" outlinks="pf14160004027252" inlinks="pf14159987740830" path="/EditNutritionalPage.xhtml"/>
   <links id="pf14148793426529" target="pf141487934265211" source="pf14148793426528" outcome="success" fromaction="#{regBean.addUser}"/>
   <links id="pf141487934265210" target="pf14148793426528" source="pf14148793426528" outcome="failure" fromaction="#{regBean.addUser}">
     <bendPoints d1Width="-2" d1Height="-56" d2Width="-2" d2Height="-56"/>
@@ -50,4 +51,6 @@
   <links id="pf14159947329350" target="pf14154034979873" source="pf14155767780246" outcome="Return"/>
   <links id="pf14159949289042" target="pf14154034979873" source="pf14155767780247" outcome="Return"/>
   <links id="pf14159949289043" target="pf14154034979873" source="pf14155764248643" outcome="Return"/>
+  <links id="pf14159987740830" target="pf14159987740831" source="pf14155767780247" outcome="goToEditPage" fromaction="#{adminIngredientsPageViewBean.editNutritions}"/>
+  <links id="pf14160004027252" target="pf14155767780247" source="pf14159987740831" outcome="Return"/>
 </pageflow:Pageflow>

@@ -21,13 +21,15 @@ public class Nutrition implements Serializable
 
 	private Integer fat;
 
-	private String nutritionName;
-
 	private Integer protein;
 
 	private Integer sodium;
 
-	private int sugar;
+	private Integer sugar;
+	
+	private Integer carbohydrates;
+	
+	private Integer cholesterol;
 
 	// bi-directional one-to-one association to Ingredient
 	@OneToOne( cascade = { CascadeType.ALL } )
@@ -67,17 +69,7 @@ public class Nutrition implements Serializable
 	{
 		this.fat = fat;
 	}
-
-	public String getNutritionName()
-	{
-		return this.nutritionName;
-	}
-
-	public void setNutritionName( String nutritionName )
-	{
-		this.nutritionName = nutritionName;
-	}
-
+	
 	public Integer getProtein()
 	{
 		return this.protein;
@@ -106,6 +98,26 @@ public class Nutrition implements Serializable
 	public void setSugar( int sugar )
 	{
 		this.sugar = sugar;
+	}
+
+	public Integer getCarbohydrates()
+	{
+		return carbohydrates;
+	}
+
+	public void setCarbohydrates( Integer carbohydrates )
+	{
+		this.carbohydrates = carbohydrates;
+	}
+
+	public Integer getCholesterol()
+	{
+		return cholesterol;
+	}
+
+	public void setCholesterol( Integer cholesterol )
+	{
+		this.cholesterol = cholesterol;
 	}
 
 	public Ingredient getIngredient()

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>Edit Nutritional Facts Page</title>
+</head>
+<body>
+<h2>Administrative Page - Nutritional Facts</h2>
+	<h:messages id="m1" errorStyle="color: #FF0000; font-size: large; font-family: Verdana, Arial, Sans-Serif; text-decoration: underline; font-weight: bold" infoStyle="font-variant: normal; color: #0080FF; font-size: large; text-decoration: underline overline; font-family: Verdana, Arial, Sans-Serif; font-weight: bold"></h:messages>
+	<h:form>
+		<h:panelGrid id="p1" columns="2" border="1">
+			<f:facet name="header">
+				<h:outputText id="o1" value="Nutritional facts for #{adminSession.workingIngredient.ingredName}"></h:outputText>
+			</f:facet>
+			<h:outputText id="o4" value="Calories:"></h:outputText>
+			
+			<h:inputText id = "Calories" value="#{adminNutritionBean.calories}">
+				<f:convertNumber for="Calories"/>
+			</h:inputText>
+			<h:outputText id="o9" value="Fat:"></h:outputText>
+			
+			<h:inputText id= "fat" value="#{adminNutritionBean.fat}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputText id="o7" value="Carbohydrates:"></h:outputText>
+			
+			<h:inputText id = "carbohydrates" value="#{adminNutritionBean.carbohydrates}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputText id="o8" value="Cholesterol:"></h:outputText>
+			
+			<h:inputText id = "cholesterol" value="#{adminNutritionBean.cholesterol}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputText id="o6" value="Sodium:"></h:outputText>
+			
+			<h:inputText id = "sodium" value="#{adminNutritionBean.sodium}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputText id="o2" value="Sugar:"></h:outputText>
+			
+			<h:inputText id = "sugar" value="#{adminNutritionBean.sugar}">
+				<f:convertNumber />
+			</h:inputText>
+			<h:outputText id="o3" value="Protein:"></h:outputText>
+			
+			<h:inputText id = "protein" value="#{adminNutritionBean.protein}">
+				<f:convertNumber />
+			</h:inputText>
+			<f:facet name="footer">
+			<h:commandButton value = "submit" action="#{adminNutritionBean.submit}"></h:commandButton>
+			</f:facet>
+		</h:panelGrid>
+	</h:form>	
+	
+	<br/>
+	<h:button outcome="Return" value="Return"></h:button>
+</body>
+</html>

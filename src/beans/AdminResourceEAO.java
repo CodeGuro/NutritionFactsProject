@@ -164,4 +164,10 @@ public class AdminResourceEAO
 		}
 		return true;
 	}
+
+	public void updateNutrition( Nutrition nutrition )
+	{
+		em.merge( nutrition );
+		refresh();		
+	}
 }
