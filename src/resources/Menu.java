@@ -19,6 +19,9 @@ public class Menu implements Serializable
 	private int menuid;
 
 	private String menuName;
+	
+	@Lob
+	private byte[] img;
 
 	// bi-directional many-to-one association to Food
 	@OneToMany( mappedBy = "menu", cascade = { CascadeType.ALL } )
@@ -72,6 +75,16 @@ public class Menu implements Serializable
 		food.setMenu( null );
 
 		return food;
+	}
+
+	public byte[] getImg()
+	{
+		return img;
+	}
+
+	public void setImg( byte[] img )
+	{
+		this.img = img;
 	}
 
 }
