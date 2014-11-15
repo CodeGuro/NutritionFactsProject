@@ -22,16 +22,6 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
-		<managed-bean-name>adminMenusPageViewBean</managed-bean-name>
-		<managed-bean-class>beans.AdminMenusPageViewBean</managed-bean-class>
-		<managed-bean-scope>view</managed-bean-scope>
-		<managed-property>
-			<property-name>adminSession</property-name>
-			<property-class>beans.AdminSession</property-class>
-			<value>#{adminSession}</value>
-		</managed-property>
-	</managed-bean>
-	<managed-bean>
 		<managed-bean-name>adminFoodsPageViewBean</managed-bean-name>
 		<managed-bean-class>beans.AdminFoodsPageViewBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
@@ -57,6 +47,16 @@
 		<managed-bean-scope>view</managed-bean-scope>
 		<managed-property>
 			<property-name>sessionBean</property-name>
+			<property-class>beans.AdminSession</property-class>
+			<value>#{adminSession}</value>
+		</managed-property>
+	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>adminMenusPageViewBean</managed-bean-name>
+		<managed-bean-class>beans.AdminMenusPageViewBean</managed-bean-class>
+		<managed-bean-scope>view</managed-bean-scope>
+		<managed-property>
+			<property-name>adminSession</property-name>
 			<property-class>beans.AdminSession</property-class>
 			<value>#{adminSession}</value>
 		</managed-property>

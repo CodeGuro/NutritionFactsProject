@@ -2,6 +2,7 @@ package beans;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -15,6 +16,13 @@ public class AdminMenusPageViewBean
 	private AdminSession adminSession;
 	private int menuId;
 	private String menuName;
+	private String img;
+	
+	@PostConstruct
+	private void init()
+	{
+		img = new String();
+	}
 
 	public AdminResourceEAO getResources()
 	{
@@ -93,6 +101,16 @@ public class AdminMenusPageViewBean
 	public void setAdminSession( AdminSession adminSession )
 	{
 		this.adminSession = adminSession;
+	}
+
+	public String getImg()
+	{
+		return img;
+	}
+
+	public void setImg( String img )
+	{
+		this.img = img;
 	}
 	
 }

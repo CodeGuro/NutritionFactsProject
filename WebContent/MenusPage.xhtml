@@ -15,6 +15,13 @@
 			<f:facet name="header">Menu Name</f:facet>
 			#{menuItem.menuName}
 		</h:column>
+		
+		<h:column>
+			<f:facet name="header">Image</f:facet>
+			<h:graphicImage value="menuitem.img"></h:graphicImage>
+		</h:column>
+		
+		
 		<h:column>
 		<f:facet name="header">Action</f:facet>
 			<h:form>
@@ -23,6 +30,14 @@
 						target="#{adminMenusPageViewBean.menuId}"
 						value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				</h:commandLink>
+				<p/>
+				<h:commandButton>
+					<input type="file" value="#{adminMenusPageViewBean.img}"></input>
+				</h:commandButton>
+				
+				
+				
+				
 				<p/>
 				<h:commandLink value="Delete" action="#{adminMenusPageViewBean.deleteMenu}">
 				 	<f:setPropertyActionListener target="#{adminMenusPageViewBean.menuId}" value="#{menuItem.menuid}"></f:setPropertyActionListener>
