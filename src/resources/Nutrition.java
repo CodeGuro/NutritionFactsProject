@@ -17,19 +17,19 @@ public class Nutrition implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int nutritionid;
 
-	private Integer calories;
+	private int calories;
 
-	private Integer fat;
+	private int fat;
 
-	private Integer protein;
+	private int protein;
 
-	private Integer sodium;
+	private int sodium;
 
-	private Integer sugar;
+	private int sugar;
 	
-	private Integer carbohydrates;
+	private int carbohydrates;
 	
-	private Integer cholesterol;
+	private int cholesterol;
 
 	// bi-directional one-to-one association to Ingredient
 	@OneToOne( cascade = { CascadeType.ALL } )
