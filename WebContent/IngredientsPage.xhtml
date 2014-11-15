@@ -47,7 +47,9 @@
 			<f:facet name="header">
 				<h:outputText value="Price"></h:outputText>
 			</f:facet>
-			<h:outputText id="price" value="#{ingred.price}"></h:outputText>
+			<h:outputText id="price" value="#{ingred.price}">
+				<f:convertNumber type="currency"></f:convertNumber>
+			</h:outputText>
 			<h:form>
 				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
 				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientPrice}">

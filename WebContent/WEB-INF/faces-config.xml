@@ -234,4 +234,12 @@
 			<to-view-id>/IngredientsPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>AdminPage.xhtml</display-name>
+		<from-view-id>/AdminPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Logout</from-outcome>
+			<to-view-id>/Login.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
