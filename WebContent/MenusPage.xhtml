@@ -24,26 +24,35 @@
 		
 		<h:column>
 		<f:facet name="header">Action</f:facet>
-			<h:form enctype="multipart/form-data">
+			<h:form>
 				<h:commandLink value="Edit" action="#{adminMenusPageViewBean.editMenu}">
 					<f:setPropertyActionListener
 						target="#{adminMenusPageViewBean.menuId}"
 						value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				</h:commandLink>
-				<p/>
+			</h:form>
+			<p/>
 				
+			<h:form enctype="multipart/form-data">
 				<h:inputFile value="#{adminMenusPageViewBean.file}"/>
 				<h:commandButton value="Submit" action="#{adminMenusPageViewBean.uploadFile}">
 					<f:setPropertyActionListener
 						target="#{adminMenusPageViewBean.menuId}"
 						value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				</h:commandButton>
-				
+					
 				<p/>
 				<h:commandLink value="Delete" action="#{adminMenusPageViewBean.deleteMenu}">
 				 	<f:setPropertyActionListener target="#{adminMenusPageViewBean.menuId}" value="#{menuItem.menuid}"></f:setPropertyActionListener>
-				 </h:commandLink>
+				</h:commandLink>
 	    	</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Foods on this menu"/>
+			</f:facet>
+		
+		
 		</h:column>
 		<f:facet name="footer">
 			<h:form id="newMenuForm">

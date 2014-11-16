@@ -242,4 +242,12 @@
 			<to-view-id>/Login.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>EditMenusPage.xhtml</display-name>
+		<from-view-id>/EditMenusPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>Return</from-outcome>
+			<to-view-id>/MenusPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>

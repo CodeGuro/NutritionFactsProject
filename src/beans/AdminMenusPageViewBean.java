@@ -2,19 +2,19 @@ package beans;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.OutputStream;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.google.common.io.ByteStreams;
 
+import resources.Food;
+import resources.Ingredient;
 import resources.Menu;
 
 public class AdminMenusPageViewBean
@@ -26,7 +26,38 @@ public class AdminMenusPageViewBean
 	private String menuName;
 	private String imgPath;
 	private Part file;
+	
 
+	public List< Food > getFoodsOnCurrentMenu()
+	{
+		return adminSession.getWorkingMenu().getFoods();
+	}
+	
+	public List< Food > getFoodsNotOnCurrentMenu()
+	{
+		List< Food > list = resources.getFoods();
+		List< Food > result = new ArrayList< Food >();
+		List< Food > myFoods = this.getAdminSession().getWorkingMenu().getFoods();
+		
+		for( Food food : list )
+		{
+			boolean addToRes = true;
+			for( Food myFood : myFoods )
+			{
+				if( myFood.getFoodid() == food.getFoodid() )
+				{
+					addToRes = false;
+					break;
+				}
+			}
+			if( addToRes )
+				result.add( food );
+		}
+		
+		return result;
+	}
+
+	
 	public AdminResourceEAO getResources()
 	{
 		return resources;

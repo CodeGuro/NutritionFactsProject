@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 
 import resources.Food;
 import resources.Ingredient;
+import resources.Menu;
 
 public class AdminFoodsPageViewBean
 {
@@ -15,7 +16,33 @@ public class AdminFoodsPageViewBean
 	private String foodName;
 	private int foodId;
 	private int ingredId;
-
+	
+	public String addToMenu()
+	{
+		Menu menu = sessionBean.getWorkingMenu();
+		Food food = resources.getFood( foodId );
+		menu.addFood( food );
+		food.setMenu( menu );
+		resources.updateMenu( menu );
+		return "success";
+	}
+	
+	public String removeFromMenu()
+	{
+		Menu menu = sessionBean.getWorkingMenu();
+		for( int i = 0; i < menu.getFoods().size(); ++i )
+		{
+			if( menu.getFoods().get( i ).getFoodid() == foodId )
+			{
+				menu.removeFood( menu.getFoods().get( i ) );
+				resources.updateMenu( menu );
+				return "success";
+			}
+		}
+		
+		return "failure";
+	}
+	
 	public AdminResourceEAO getResources()
 	{
 		return resources;
