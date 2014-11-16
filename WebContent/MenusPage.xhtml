@@ -18,25 +18,26 @@
 		
 		<h:column>
 			<f:facet name="header">Image</f:facet>
-			<h:graphicImage value="menuitem.img"></h:graphicImage>
+			<h:graphicImage value="#{menuItem.imgPath}" height="100" width="100"></h:graphicImage>
 		</h:column>
 		
 		
 		<h:column>
 		<f:facet name="header">Action</f:facet>
-			<h:form>
+			<h:form enctype="multipart/form-data">
 				<h:commandLink value="Edit" action="#{adminMenusPageViewBean.editMenu}">
 					<f:setPropertyActionListener
 						target="#{adminMenusPageViewBean.menuId}"
 						value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				</h:commandLink>
 				<p/>
-				<h:commandButton>
-					<input type="file" value="#{adminMenusPageViewBean.img}"></input>
+				
+				<h:inputFile value="#{adminMenusPageViewBean.file}"/>
+				<h:commandButton value="Submit" action="#{adminMenusPageViewBean.uploadFile}">
+					<f:setPropertyActionListener
+						target="#{adminMenusPageViewBean.menuId}"
+						value="#{menuItem.menuid}"></f:setPropertyActionListener>
 				</h:commandButton>
-				
-				
-				
 				
 				<p/>
 				<h:commandLink value="Delete" action="#{adminMenusPageViewBean.deleteMenu}">

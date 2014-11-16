@@ -20,8 +20,7 @@ public class Menu implements Serializable
 
 	private String menuName;
 	
-	@Lob
-	private byte[] img;
+	private String imgPath;
 
 	// bi-directional many-to-one association to Food
 	@OneToMany( mappedBy = "menu", cascade = { CascadeType.ALL } )
@@ -77,14 +76,14 @@ public class Menu implements Serializable
 		return food;
 	}
 
-	public byte[] getImg()
+	public String getImgPath()
 	{
-		return img;
+		return imgPath;
 	}
 
-	public void setImg( byte[] img )
+	public void setImgPath( String imgPath )
 	{
-		this.img = img;
+		this.imgPath = imgPath;
 	}
 
 }

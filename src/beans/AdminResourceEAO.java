@@ -170,4 +170,10 @@ public class AdminResourceEAO
 		em.merge( nutrition );
 		refresh();		
 	}
+
+	public void updateMenu( Menu menu )
+	{
+		em.merge( menu );
+		refresh();
+	}
 }

@@ -1,11 +1,19 @@
 package beans;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+
+import com.google.common.io.ByteStreams;
 
 import resources.Menu;
 
@@ -16,13 +24,8 @@ public class AdminMenusPageViewBean
 	private AdminSession adminSession;
 	private int menuId;
 	private String menuName;
-	private String img;
-	
-	@PostConstruct
-	private void init()
-	{
-		img = new String();
-	}
+	private String imgPath;
+	private Part file;
 
 	public AdminResourceEAO getResources()
 	{
@@ -38,7 +41,7 @@ public class AdminMenusPageViewBean
 	{
 		return resources.getMenus();
 	}
-	
+
 	public String deleteMenu()
 	{
 		if( resources.removeMenu( this.menuId ) )
@@ -77,16 +80,19 @@ public class AdminMenusPageViewBean
 		menu.setMenuName( menuName );
 		if( !resources.persistMenu( menu ) )
 		{
-			FacesContext.getCurrentInstance().addMessage( null,
-				new FacesMessage( FacesMessage.SEVERITY_ERROR, "An error occurred!", null ) );
+			FacesContext.getCurrentInstance().addMessage(
+				null,
+				new FacesMessage( FacesMessage.SEVERITY_ERROR,
+					"An error occurred!", null ) );
 			return "createFail";
 		}
-		FacesContext.getCurrentInstance().addMessage( null,
+		FacesContext.getCurrentInstance().addMessage(
+			null,
 			new FacesMessage( FacesMessage.SEVERITY_INFO, "New Menu Item \""
 				+ menu.getMenuName() + "\" created!", null ) );
 		return "createSuccess";
 	}
-	
+
 	public String editMenu()
 	{
 		adminSession.setWorkingMenu( resources.getMenu( this.getMenuId() ) );
@@ -103,14 +109,54 @@ public class AdminMenusPageViewBean
 		this.adminSession = adminSession;
 	}
 
-	public String getImg()
+	public String getImgPath()
 	{
-		return img;
+		return imgPath;
 	}
 
-	public void setImg( String img )
+	public void setImgPath( String imgPath )
 	{
-		this.img = img;
+		this.imgPath = imgPath;
 	}
-	
+
+	public Part getFile()
+	{
+		return file;
+	}
+
+	public void setFile( Part file )
+	{
+		this.file = file;
+	}
+
+	public String uploadFile()
+	{
+		Menu menu = resources.getMenu( menuId );
+		if( file == null )
+			return "failure";
+		String basePath = System.getProperty( "user.dir" );
+		basePath = "C:\\Users\\Administrator\\Desktop\\SixTwelveProject\\WebContent\\img";
+		
+		String filePath = Paths.get( basePath, file.getSubmittedFileName() ).toString();
+		
+		File saveFile = new File( filePath );
+		if( !saveFile.exists() )
+		{
+			try
+			{
+				saveFile.createNewFile();
+				FileOutputStream os = new FileOutputStream( saveFile );
+				ByteStreams.copy( file.getInputStream(), os );
+				os.close();
+			}
+			catch( Exception e )
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		menu.setImgPath( Paths.get( "img", file.getSubmittedFileName() ).toString() );
+		resources.updateMenu( menu );
+		return "success";
+	}
 }
