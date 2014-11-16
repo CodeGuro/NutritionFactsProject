@@ -19,6 +19,10 @@ public class Nutrition implements Serializable
 
 	private int calories;
 
+	private int carbohydrates;
+
+	private int cholesterol;
+
 	private int fat;
 
 	private int protein;
@@ -26,13 +30,9 @@ public class Nutrition implements Serializable
 	private int sodium;
 
 	private int sugar;
-	
-	private int carbohydrates;
-	
-	private int cholesterol;
 
 	// bi-directional one-to-one association to Ingredient
-	@OneToOne( cascade = { CascadeType.ALL } )
+	@OneToOne
 	@PrimaryKeyJoinColumn( name = "nutritionid" )
 	private Ingredient ingredient;
 
@@ -50,42 +50,62 @@ public class Nutrition implements Serializable
 		this.nutritionid = nutritionid;
 	}
 
-	public Integer getCalories()
+	public int getCalories()
 	{
 		return this.calories;
 	}
 
-	public void setCalories( Integer calories )
+	public void setCalories( int calories )
 	{
 		this.calories = calories;
 	}
 
-	public Integer getFat()
+	public int getCarbohydrates()
+	{
+		return this.carbohydrates;
+	}
+
+	public void setCarbohydrates( int carbohydrates )
+	{
+		this.carbohydrates = carbohydrates;
+	}
+
+	public int getCholesterol()
+	{
+		return this.cholesterol;
+	}
+
+	public void setCholesterol( int cholesterol )
+	{
+		this.cholesterol = cholesterol;
+	}
+
+	public int getFat()
 	{
 		return this.fat;
 	}
 
-	public void setFat( Integer fat )
+	public void setFat( int fat )
 	{
 		this.fat = fat;
 	}
-	
-	public Integer getProtein()
+
+	public int getProtein()
 	{
 		return this.protein;
 	}
 
-	public void setProtein( Integer protein )
+	public void setProtein( int protein )
 	{
 		this.protein = protein;
 	}
 
-	public Integer getSodium()
+	public int getSodium()
 	{
 		return this.sodium;
 	}
 
-	public void setSodium( Integer sodium )
+	public void setSodium( int sodium )
 	{
 		this.sodium = sodium;
 	}
@@ -98,26 +118,6 @@ public class Nutrition implements Serializable
 	public void setSugar( int sugar )
 	{
 		this.sugar = sugar;
-	}
-
-	public Integer getCarbohydrates()
-	{
-		return carbohydrates;
-	}
-
-	public void setCarbohydrates( Integer carbohydrates )
-	{
-		this.carbohydrates = carbohydrates;
-	}
-
-	public Integer getCholesterol()
-	{
-		return cholesterol;
-	}
-
-	public void setCholesterol( Integer cholesterol )
-	{
-		this.cholesterol = cholesterol;
 	}
 
 	public Ingredient getIngredient()

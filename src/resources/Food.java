@@ -25,14 +25,13 @@ public class Food implements Serializable
 
 	private int refCount;
 
-	// bi-directional many-to-one association to Menu
-	@ManyToOne( cascade = { CascadeType.ALL } )
-	@JoinColumn( name = "keyToMenu" )
-	private Menu menu;
-
 	// bi-directional many-to-many association to Ingredient
-	@ManyToMany( mappedBy = "foods" )
+	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.ALL } )
 	private List< Ingredient > ingredients;
+
+	// bi-directional many-to-many association to Menu
+	@ManyToMany( mappedBy = "foods" )
+	private List< Menu > menus;
 
 	public Food()
 	{
@@ -68,19 +67,24 @@ public class Food implements Serializable
 		this.refCount = refCount;
 	}
 
-	public Menu getMenu()
-	{
-		return this.menu;
-	}
-
-	public void setMenu( Menu menu )
-	{
-		this.menu = menu;
-	}
-
 	public List< Ingredient > getIngredients()
 	{
 		return this.ingredients;
+	}
+
+	public void setIngredients( List< Ingredient > ingredients )
+	{
+		this.ingredients = ingredients;
+	}
+
+	public List< Menu > getMenus()
+	{
+		return this.menus;
+	}
+
+	public void setMenus( List< Menu > menus )
+	{
+		this.menus = menus;
 	}
 	
 	public List< Ingredient > getUnincludedIngredients( List< Ingredient > list )
@@ -116,11 +120,6 @@ public class Food implements Serializable
 			delim = ", ";
 		}
 		return res;
-	}
-
-	public void setIngredients( List< Ingredient > ingredients )
-	{
-		this.ingredients = ingredients;
 	}
 
 }

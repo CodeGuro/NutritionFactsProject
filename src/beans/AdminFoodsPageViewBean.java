@@ -21,8 +21,8 @@ public class AdminFoodsPageViewBean
 	{
 		Menu menu = sessionBean.getWorkingMenu();
 		Food food = resources.getFood( foodId );
-		menu.addFood( food );
-		food.setMenu( menu );
+		menu.getFoods().add( food );
+		food.getMenus().add( menu );
 		resources.updateMenu( menu );
 		return "success";
 	}
@@ -34,7 +34,10 @@ public class AdminFoodsPageViewBean
 		{
 			if( menu.getFoods().get( i ).getFoodid() == foodId )
 			{
-				menu.removeFood( menu.getFoods().get( i ) );
+				for( int j = 0; j < menu.getFoods().size(); ++j )
+					if( menu.getFoods().get( j ).getFoodid() == foodId )
+						menu.getFoods().remove( j );
+				
 				resources.updateMenu( menu );
 				return "success";
 			}

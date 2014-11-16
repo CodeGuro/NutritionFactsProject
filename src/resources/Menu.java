@@ -18,12 +18,13 @@ public class Menu implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int menuid;
 
-	private String menuName;
-	
 	private String imgPath;
 
-	// bi-directional many-to-one association to Food
-	@OneToMany( mappedBy = "menu", cascade = { CascadeType.ALL } )
+	private String menuName;
+
+	// bi-directional many-to-many association to Food
+	@ManyToMany
+	@JoinTable( name = "menu_has_food", joinColumns = { @JoinColumn( name = "menu_menuid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 
 	public Menu()
@@ -38,6 +39,16 @@ public class Menu implements Serializable
 	public void setMenuid( int menuid )
 	{
 		this.menuid = menuid;
+	}
+
+	public String getImgPath()
+	{
+		return this.imgPath;
+	}
+
+	public void setImgPath( String imgPath )
+	{
+		this.imgPath = imgPath;
 	}
 
 	public String getMenuName()
@@ -59,31 +70,19 @@ public class Menu implements Serializable
 	{
 		this.foods = foods;
 	}
-
-	public Food addFood( Food food )
+	
+	public String getFoodsStr()
 	{
-		getFoods().add( food );
-		food.setMenu( this );
-
-		return food;
-	}
-
-	public Food removeFood( Food food )
-	{
-		getFoods().remove( food );
-		food.setMenu( null );
-
-		return food;
-	}
-
-	public String getImgPath()
-	{
-		return imgPath;
-	}
-
-	public void setImgPath( String imgPath )
-	{
-		this.imgPath = imgPath;
+		String delim = "";
+		String result = "";
+		
+		for( Food food : this.getFoods() )
+		{
+			result += delim + food.getFoodName();
+			delim = ", ";
+		}
+		
+		return result;
 	}
 
 }

@@ -22,19 +22,17 @@ public class Ingredient implements Serializable
 
 	private String ingredName;
 
-	private Double price;
+	private double price;
 
 	private int refCount;
 
 	// bi-directional many-to-many association to Food
-	@ManyToMany
-	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn(
-		name = "ingredient_ingredientid" ) },
-		inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
+	@ManyToMany( cascade = { CascadeType.ALL } )
+	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn( name = "ingredient_ingredientid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 
 	// bi-directional one-to-one association to Nutrition
-	@OneToOne( mappedBy = "ingredient", cascade = { CascadeType.ALL } )
+	@OneToOne( mappedBy = "ingredient" )
 	private Nutrition nutrition;
 
 	public Ingredient()
@@ -71,14 +69,14 @@ public class Ingredient implements Serializable
 		this.ingredName = ingredName;
 	}
 
-	public Double getPrice()
+	public double getPrice()
 	{
 		return this.price;
 	}
 
-	public void setPrice( Double price )
+	public void setPrice( double d )
 	{
-		this.price = price;
+		this.price = d;
 	}
 
 	public int getRefCount()
@@ -95,6 +93,21 @@ public class Ingredient implements Serializable
 	{
 		return this.foods;
 	}
+
+	public void setFoods( List< Food > foods )
+	{
+		this.foods = foods;
+	}
+
+	public Nutrition getNutrition()
+	{
+		return this.nutrition;
+	}
+
+	public void setNutrition( Nutrition nutrition )
+	{
+		this.nutrition = nutrition;
+	}
 	
 	public String getListOfFoodsStr()
 	{
@@ -110,21 +123,6 @@ public class Ingredient implements Serializable
 				}
 		}
 		return res;
-	}
-
-	public void setFoods( List< Food > foods )
-	{
-		this.foods = foods;
-	}
-
-	public Nutrition getNutrition()
-	{
-		return this.nutrition;
-	}
-
-	public void setNutrition( Nutrition nutrition )
-	{
-		this.nutrition = nutrition;
 	}
 
 }
