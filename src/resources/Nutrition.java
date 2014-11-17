@@ -32,7 +32,7 @@ public class Nutrition implements Serializable
 	private int sugar;
 
 	// bi-directional one-to-one association to Ingredient
-	@OneToOne
+	@OneToOne( cascade = { CascadeType.ALL } )
 	@PrimaryKeyJoinColumn( name = "nutritionid" )
 	private Ingredient ingredient;
 

@@ -27,12 +27,12 @@ public class Ingredient implements Serializable
 	private int refCount;
 
 	// bi-directional many-to-many association to Food
-	@ManyToMany( cascade = { CascadeType.ALL } )
+	@ManyToMany
 	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn( name = "ingredient_ingredientid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 
 	// bi-directional one-to-one association to Nutrition
-	@OneToOne( mappedBy = "ingredient" )
+	@OneToOne( mappedBy = "ingredient", cascade = { CascadeType.ALL } )
 	private Nutrition nutrition;
 
 	public Ingredient()
@@ -74,9 +74,9 @@ public class Ingredient implements Serializable
 		return this.price;
 	}
 
-	public void setPrice( double d )
+	public void setPrice( double price )
 	{
-		this.price = d;
+		this.price = price;
 	}
 
 	public int getRefCount()
@@ -108,7 +108,7 @@ public class Ingredient implements Serializable
 	{
 		this.nutrition = nutrition;
 	}
-	
+
 	public String getListOfFoodsStr()
 	{
 		String res = "";

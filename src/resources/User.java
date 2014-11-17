@@ -36,9 +36,7 @@ public class User implements Serializable
 
 	// bi-directional many-to-many association to Group
 	@ManyToMany
-	@JoinTable( name = "user_has_groups", joinColumns = { @JoinColumn(
-		name = "User_userid" ) }, inverseJoinColumns = { @JoinColumn(
-		name = "Groups_groupid" ) } )
+	@JoinTable( name = "user_has_groups", joinColumns = { @JoinColumn( name = "User_userid" ) }, inverseJoinColumns = { @JoinColumn( name = "Groups_groupid" ) } )
 	private List< Group > groups;
 
 	public User()

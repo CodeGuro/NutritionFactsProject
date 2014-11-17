@@ -26,7 +26,7 @@ public class Food implements Serializable
 	private int refCount;
 
 	// bi-directional many-to-many association to Ingredient
-	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.ALL } )
+	@ManyToMany( mappedBy = "foods" )
 	private List< Ingredient > ingredients;
 
 	// bi-directional many-to-many association to Menu
@@ -86,12 +86,12 @@ public class Food implements Serializable
 	{
 		this.menus = menus;
 	}
-	
+
 	public List< Ingredient > getUnincludedIngredients( List< Ingredient > list )
 	{
 		List< Ingredient > result = new ArrayList< Ingredient >();
 		List< Ingredient > myingreds = this.getIngredients();
-		
+
 		for( Ingredient ingred : list )
 		{
 			boolean addToRes = true;
@@ -106,10 +106,10 @@ public class Food implements Serializable
 			if( addToRes )
 				result.add( ingred );
 		}
-		
+
 		return result;
 	}
-	
+
 	public String getListOfIngredsStr()
 	{
 		String delim = "";
