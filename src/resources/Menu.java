@@ -70,19 +70,4 @@ public class Menu implements Serializable
 	{
 		this.foods = foods;
 	}
-
-	public String getFoodsStr()
-	{
-		String delim = "";
-		String result = "";
-
-		for( Food food : this.getFoods() )
-		{
-			result += delim + food.getFoodName();
-			delim = ", ";
-		}
-
-		return result;
-	}
-
 }

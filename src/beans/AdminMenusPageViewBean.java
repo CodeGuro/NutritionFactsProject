@@ -14,7 +14,6 @@ import javax.servlet.http.Part;
 import com.google.common.io.ByteStreams;
 
 import resources.Food;
-import resources.Ingredient;
 import resources.Menu;
 
 public class AdminMenusPageViewBean
@@ -189,5 +188,19 @@ public class AdminMenusPageViewBean
 		menu.setImgPath( Paths.get( "img", file.getSubmittedFileName() ).toString() );
 		resources.updateMenu( menu );
 		return "success";
+	}
+	
+	public String getFoodsStr( Menu menu )
+	{
+		String delim = "";
+		String result = "";
+
+		for( Food food : menu.getFoods() )
+		{
+			result += delim + food.getFoodName();
+			delim = ", ";
+		}
+
+		return result;
 	}
 }
