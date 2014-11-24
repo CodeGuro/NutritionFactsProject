@@ -1,5 +1,6 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -78,8 +79,27 @@ public class AdminFoodsPageViewBean
 	
 	public List< Ingredient > getCurrentFoodIngredientsInvList()
 	{
-		return this.sessionBean.getWorkingFood()
-			.getUnincludedIngredients( this.getResources().getIngredients() );
+		Food food = this.sessionBean.getWorkingFood();
+		
+		List< Ingredient > result = new ArrayList< Ingredient >();
+		List< Ingredient > myingreds = food.getIngredients();
+
+		for( Ingredient ingred : this.getResources().getIngredients() )
+		{
+			boolean addToRes = true;
+			for( Ingredient myIng : myingreds )
+			{
+				if( myIng.getIngredientid() == ingred.getIngredientid() )
+				{
+					addToRes = false;
+					break;
+				}
+			}
+			if( addToRes )
+				result.add( ingred );
+		}
+
+		return result;
 	}
 	
 	public String getFoodName()
@@ -192,4 +212,18 @@ public class AdminFoodsPageViewBean
 		}
 		return res;
 	}
+	
+	public String getIngredientsStr( Food food )
+	{
+		String delim = "";
+		String res = "";
+		for( Ingredient ingred : food.getIngredients() )
+		{
+			res += delim + ingred.getIngredName();
+			delim = ", ";
+		}
+		return res;
+	}
+	
+	
 }

@@ -23,7 +23,7 @@
 			<f:facet name="header">
 				<h:outputText value="Ingredients List"></h:outputText>
 			</f:facet>
-			<h:outputText value="#{food.listOfIngredsStr}"></h:outputText>
+			<h:outputText value="#{adminFoodsPageViewBean.getIngredientsStr(food)}"></h:outputText>
 			<br/>
 			<h:form>
 				<h:commandLink value="new" action="#{adminFoodsPageViewBean.prepareNewIngredient}">
