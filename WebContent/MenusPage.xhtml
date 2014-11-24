@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <title>Administrative Menu Page</title>
+<link rel="stylesheet" type="text/css" href="./style/adminpages.css"/>
 </head>
-<body>
+<h:body styleClass="body">
 	<h2>Administrative Page - Menus</h2>
 	<h:messages id="messagesId"></h:messages>
 	<h:dataTable id="menuTable" var="menuItem" value="#{adminMenusPageViewBean.menus}" border="1">
@@ -67,5 +68,5 @@
 	</h:dataTable>
 	<br/>
 	<h:button outcome="Return" value="Return"></h:button>
-</body>
+</h:body>
 </html>

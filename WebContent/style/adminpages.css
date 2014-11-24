@@ -1,0 +1,7 @@
+@CHARSET "ISO-8859-1";
+.body
+{
+    background-image: url("../img/corp_bg.jpg");
+	background-repeat: repeat;
+	font-family: "Arial";
+}

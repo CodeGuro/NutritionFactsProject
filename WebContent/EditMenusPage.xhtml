@@ -6,8 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <title>Edit Menu Page</title>
+<link rel="stylesheet" type="text/css" href="./style/adminpages.css"/>
 </head>
-<body>
+<h:body styleClass="body">
 <h2>Edit Menu Page</h2>
 	<h:dataTable id="onTable" var="food" border="1" value="#{adminMenusPageViewBean.foodsOnCurrentMenu}">
 		
@@ -85,5 +86,5 @@
 
 	<br/>
 	<h:button outcome="Return" value="Return"></h:button>
-</body>
+</h:body>
 </html>
