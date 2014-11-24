@@ -108,21 +108,4 @@ public class Ingredient implements Serializable
 	{
 		this.nutrition = nutrition;
 	}
-
-	public String getListOfFoodsStr()
-	{
-		String res = "";
-		String delim = "";
-		for( Food food : getFoods() )
-		{
-			if( food != null )
-				if( food.getFoodName() != null )
-				{
-					res += delim + food.getFoodName();
-					delim = ", ";
-				}
-		}
-		return res;
-	}
-
 }

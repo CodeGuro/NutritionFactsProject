@@ -176,4 +176,20 @@ public class AdminFoodsPageViewBean
 		
 		return "remIngSuccess";
 	}
+	
+	public String getFoodsAssociated( Ingredient ingred )
+	{
+		String res = "";
+		String delim = "";
+		for( Food food : ingred.getFoods() )
+		{
+			if( food != null )
+				if( food.getFoodName() != null )
+				{
+					res += delim + food.getFoodName();
+					delim = ", ";
+				}
+		}
+		return res;
+	}
 }
