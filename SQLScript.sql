@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`address` (
   `Country` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`addressid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`food` (
   `description` VARCHAR(1024) NULL DEFAULT NULL,
   PRIMARY KEY (`foodid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
+AUTO_INCREMENT = 18
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ingredient` (
   `description` VARCHAR(1024) NULL DEFAULT NULL,
   PRIMARY KEY (`ingredientid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 27
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -75,13 +75,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`food_has_ingredient` (
   CONSTRAINT `fk_food_has_ingredient_food1`
     FOREIGN KEY (`food_foodid`)
     REFERENCES `mydb`.`food` (`foodid`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_food_has_ingredient_ingredient1`
     FOREIGN KEY (`ingredient_ingredientid`)
     REFERENCES `mydb`.`ingredient` (`ingredientid`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`menu` (
   `description` VARCHAR(1024) NULL DEFAULT NULL,
   PRIMARY KEY (`menuid`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -125,13 +125,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`menu_has_food` (
   CONSTRAINT `fk_menu_has_food_food1`
     FOREIGN KEY (`food_foodid`)
     REFERENCES `mydb`.`food` (`foodid`)
-    ON DELETE CASCADE
+    ON DELETE NO ACTION
     ON UPDATE CASCADE,
   CONSTRAINT `fk_menu_has_food_menu1`
     FOREIGN KEY (`menu_menuid`)
     REFERENCES `mydb`.`menu` (`menuid`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`nutrition` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 13
+AUTO_INCREMENT = 27
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -179,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 7
 DEFAULT CHARACTER SET = latin1;
 
 
@@ -196,12 +196,12 @@ CREATE TABLE IF NOT EXISTS `mydb`.`user_has_groups` (
     FOREIGN KEY (`Groups_groupid`)
     REFERENCES `mydb`.`groups` (`groupid`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_User_has_Groups_User1`
     FOREIGN KEY (`User_userid`)
     REFERENCES `mydb`.`user` (`userid`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 

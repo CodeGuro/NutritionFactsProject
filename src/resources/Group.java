@@ -24,7 +24,8 @@ public class Group implements Serializable
 	private String groupname;
 
 	// bi-directional many-to-many association to User
-	@ManyToMany( mappedBy = "groups" )
+	@ManyToMany( mappedBy = "groups", cascade = { CascadeType.PERSIST,
+		CascadeType.MERGE, CascadeType.REFRESH } )
 	private List< User > users;
 
 	public Group()

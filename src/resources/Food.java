@@ -27,11 +27,13 @@ public class Food implements Serializable
 	private int refCount;
 
 	// bi-directional many-to-many association to Ingredient
-	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.ALL } )
+	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.PERSIST,
+		CascadeType.MERGE, CascadeType.REFRESH } )
 	private List< Ingredient > ingredients;
 
 	// bi-directional many-to-many association to Menu
-	@ManyToMany( mappedBy = "foods" )
+	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.PERSIST,
+		CascadeType.MERGE, CascadeType.REFRESH } )
 	private List< Menu > menus;
 
 	public Food()

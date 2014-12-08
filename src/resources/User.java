@@ -31,11 +31,12 @@ public class User implements Serializable
 	private String username;
 
 	// bi-directional many-to-one association to Address
-	@ManyToOne
+	@ManyToOne( cascade = { CascadeType.ALL } )
 	private Address address;
 
 	// bi-directional many-to-many association to Group
-	@ManyToMany
+	@ManyToMany( cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+		CascadeType.REFRESH } )
 	@JoinTable( name = "user_has_groups", joinColumns = { @JoinColumn( name = "User_userid" ) }, inverseJoinColumns = { @JoinColumn( name = "Groups_groupid" ) } )
 	private List< Group > groups;
 

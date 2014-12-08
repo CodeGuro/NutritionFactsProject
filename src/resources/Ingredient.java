@@ -31,7 +31,8 @@ public class Ingredient implements Serializable
 	private int refCount;
 
 	// bi-directional many-to-many association to Food
-	@ManyToMany( cascade = { CascadeType.ALL } )
+	@ManyToMany( cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+		CascadeType.REFRESH } )
 	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn( name = "ingredient_ingredientid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 

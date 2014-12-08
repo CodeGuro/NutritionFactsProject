@@ -25,7 +25,8 @@ public class Menu implements Serializable
 	private String menuName;
 
 	// bi-directional many-to-many association to Food
-	@ManyToMany
+	@ManyToMany( cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+		CascadeType.REFRESH } )
 	@JoinTable( name = "menu_has_food", joinColumns = { @JoinColumn( name = "menu_menuid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 

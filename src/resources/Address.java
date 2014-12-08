@@ -32,7 +32,7 @@ public class Address implements Serializable
 	private String zip;
 
 	// bi-directional many-to-one association to User
-	@OneToMany( mappedBy = "address" )
+	@OneToMany( mappedBy = "address", cascade = { CascadeType.ALL } )
 	private List< User > users;
 
 	public Address()
