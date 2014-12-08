@@ -64,4 +64,15 @@ public class Util
 			r.add( clazz.cast( o ) );
 		return r;
 	}
+	
+	public static String getFileName( String str )
+	{
+		String[] parts = str.split( "\\\\" );
+		return parts[ parts.length - 1 ];
+	}
+
+	public static String getBasePath()
+	{
+		return "C:\\Users\\Administrator\\Desktop\\SixTwelveProject\\WebContent\\img";
+	}
 }

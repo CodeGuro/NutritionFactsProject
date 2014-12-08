@@ -1,13 +1,20 @@
 package beans;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.servlet.http.Part;
+
+import com.google.common.io.ByteStreams;
 
 import resources.Food;
 import resources.Ingredient;
 import resources.Menu;
+import resources.Util;
 
 public class AdminFoodsPageViewBean
 {
@@ -17,6 +24,8 @@ public class AdminFoodsPageViewBean
 	private String foodName;
 	private int foodId;
 	private int ingredId;
+	private String imgPath;
+	private Part file;
 	
 	public String addToMenu()
 	{
@@ -224,6 +233,51 @@ public class AdminFoodsPageViewBean
 		}
 		return res;
 	}
+
+	public String getImgPath()
+	{
+		return imgPath;
+	}
+
+	public void setImgPath( String imgPath )
+	{
+		this.imgPath = imgPath;
+	}
+
+	public Part getFile()
+	{
+		return file;
+	}
+
+	public void setFile( Part file )
+	{
+		this.file = file;
+	}
 	
+	public String submitImageFor( Food food )
+	{
+		String basePath = Util.getBasePath();
+		String filePath = Paths.get( basePath, Util.getFileName( file.getSubmittedFileName() ) ).toString();
+		
+		File saveFile = new File( filePath );
+		if( !saveFile.exists() )
+		{
+			try
+			{
+				saveFile.createNewFile();
+				FileOutputStream os = new FileOutputStream( saveFile );
+				ByteStreams.copy( file.getInputStream(), os );
+				os.close();
+			}
+			catch( Exception e )
+			{
+				e.printStackTrace();
+				return "failure";
+			}
+		}
+		food.setImgPath( Paths.get( "img", Util.getFileName( file.getSubmittedFileName() ) ).toString() );
+		resources.updateFood( food );
+		return "success";
+	}
 	
 }

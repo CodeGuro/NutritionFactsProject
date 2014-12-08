@@ -15,6 +15,7 @@ import com.google.common.io.ByteStreams;
 
 import resources.Food;
 import resources.Menu;
+import resources.Util;
 
 public class AdminMenusPageViewBean
 {
@@ -159,20 +160,14 @@ public class AdminMenusPageViewBean
 		this.file = file;
 	}
 
-	private static String getFileName( String str )
-	{
-		String[] parts = str.split( "\\\\" );
-		return parts[ parts.length - 1 ];
-	}
-
 	public String uploadFile()
 	{
 		Menu menu = resources.getMenu( menuId );
 		if( file == null )
 			return "failure";
 		
-		String basePath = "C:\\Users\\Tony\\Desktop\\SixTwelveProject\\WebContent\\img";
-		String filePath = Paths.get( basePath, getFileName( file.getSubmittedFileName() ) ).toString();
+		String basePath = Util.getBasePath();
+		String filePath = Paths.get( basePath, Util.getFileName( file.getSubmittedFileName() ) ).toString();
 		
 		File saveFile = new File( filePath );
 		if( !saveFile.exists() )
@@ -187,10 +182,10 @@ public class AdminMenusPageViewBean
 			catch( Exception e )
 			{
 				e.printStackTrace();
+				return "failure";
 			}
 		}
-		
-		menu.setImgPath( Paths.get( "img", getFileName( file.getSubmittedFileName() ) ).toString() );
+		menu.setImgPath( Paths.get( "img", Util.getFileName( file.getSubmittedFileName() ) ).toString() );
 		resources.updateMenu( menu );
 		return "success";
 	}
