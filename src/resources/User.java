@@ -16,7 +16,7 @@ public class User implements Serializable
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private Integer userid;
+	private int userid;
 
 	private String birth;
 
@@ -31,7 +31,7 @@ public class User implements Serializable
 	private String username;
 
 	// bi-directional many-to-one association to Address
-	@ManyToOne( cascade = { CascadeType.ALL } )
+	@ManyToOne
 	private Address address;
 
 	// bi-directional many-to-many association to Group
@@ -43,12 +43,12 @@ public class User implements Serializable
 	{
 	}
 
-	public Integer getUserid()
+	public int getUserid()
 	{
 		return this.userid;
 	}
 
-	public void setUserid( Integer userid )
+	public void setUserid( int userid )
 	{
 		this.userid = userid;
 	}

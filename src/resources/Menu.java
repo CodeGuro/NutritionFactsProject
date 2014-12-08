@@ -18,6 +18,8 @@ public class Menu implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int menuid;
 
+	private String description;
+
 	private String imgPath;
 
 	private String menuName;
@@ -39,6 +41,16 @@ public class Menu implements Serializable
 	public void setMenuid( int menuid )
 	{
 		this.menuid = menuid;
+	}
+
+	public String getDescription()
+	{
+		return this.description;
+	}
+
+	public void setDescription( String description )
+	{
+		this.description = description;
 	}
 
 	public String getImgPath()
@@ -70,4 +82,5 @@ public class Menu implements Serializable
 	{
 		this.foods = foods;
 	}
+
 }

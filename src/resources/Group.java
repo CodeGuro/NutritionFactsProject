@@ -17,7 +17,7 @@ public class Group implements Serializable
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private Integer groupid;
+	private int groupid;
 
 	private String groupdesc;
 
@@ -31,12 +31,12 @@ public class Group implements Serializable
 	{
 	}
 
-	public Integer getGroupid()
+	public int getGroupid()
 	{
 		return this.groupid;
 	}
 
-	public void setGroupid( Integer groupid )
+	public void setGroupid( int groupid )
 	{
 		this.groupid = groupid;
 	}

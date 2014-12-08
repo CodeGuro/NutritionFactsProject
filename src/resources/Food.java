@@ -1,10 +1,7 @@
 package resources;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,12 +18,16 @@ public class Food implements Serializable
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
 	private int foodid;
 
+	private String description;
+
 	private String foodName;
+
+	private String imgPath;
 
 	private int refCount;
 
 	// bi-directional many-to-many association to Ingredient
-	@ManyToMany( mappedBy = "foods" )
+	@ManyToMany( mappedBy = "foods", cascade = { CascadeType.ALL } )
 	private List< Ingredient > ingredients;
 
 	// bi-directional many-to-many association to Menu
@@ -47,6 +48,16 @@ public class Food implements Serializable
 		this.foodid = foodid;
 	}
 
+	public String getDescription()
+	{
+		return this.description;
+	}
+
+	public void setDescription( String description )
+	{
+		this.description = description;
+	}
+
 	public String getFoodName()
 	{
 		return this.foodName;
@@ -55,6 +66,16 @@ public class Food implements Serializable
 	public void setFoodName( String foodName )
 	{
 		this.foodName = foodName;
+	}
+
+	public String getImgPath()
+	{
+		return this.imgPath;
+	}
+
+	public void setImgPath( String imgPath )
+	{
+		this.imgPath = imgPath;
 	}
 
 	public int getRefCount()
@@ -86,4 +107,5 @@ public class Food implements Serializable
 	{
 		this.menus = menus;
 	}
+
 }

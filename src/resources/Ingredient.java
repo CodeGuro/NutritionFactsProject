@@ -20,6 +20,10 @@ public class Ingredient implements Serializable
 
 	private String allergen;
 
+	private String description;
+
+	private String imgPath;
+
 	private String ingredName;
 
 	private double price;
@@ -27,7 +31,7 @@ public class Ingredient implements Serializable
 	private int refCount;
 
 	// bi-directional many-to-many association to Food
-	@ManyToMany
+	@ManyToMany( cascade = { CascadeType.ALL } )
 	@JoinTable( name = "food_has_ingredient", joinColumns = { @JoinColumn( name = "ingredient_ingredientid" ) }, inverseJoinColumns = { @JoinColumn( name = "food_foodid" ) } )
 	private List< Food > foods;
 
@@ -57,6 +61,26 @@ public class Ingredient implements Serializable
 	public void setAllergen( String allergen )
 	{
 		this.allergen = allergen;
+	}
+
+	public String getDescription()
+	{
+		return this.description;
+	}
+
+	public void setDescription( String description )
+	{
+		this.description = description;
+	}
+
+	public String getImgPath()
+	{
+		return this.imgPath;
+	}
+
+	public void setImgPath( String imgPath )
+	{
+		this.imgPath = imgPath;
 	}
 
 	public String getIngredName()
@@ -108,4 +132,5 @@ public class Ingredient implements Serializable
 	{
 		this.nutrition = nutrition;
 	}
+
 }
