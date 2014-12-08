@@ -55,6 +55,16 @@
 			<h:outputText value="#{adminMenusPageViewBean.getFoodsStr(menuItem)}"/>
 		</h:column>
 		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Description " />
+			</f:facet>
+			<h:outputText value="#{menuItem.description}" />
+			<h:form>
+				<h:inputText value="#{adminMenusPageViewBean.editText}" />
+				<h:commandLink value="edit" action="#{adminMenusPageViewBean.setDescFor(menuItem)}" />
+			</h:form>
+		</h:column>
 		
 		<f:facet name="footer">
 			<h:form id="newMenuForm">

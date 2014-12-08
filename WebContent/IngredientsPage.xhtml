@@ -30,6 +30,12 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">
+				<h:outputText value="Image "/>
+			</f:facet>
+			<h:graphicImage width="100" height="100" value="#{ingred.imgPath}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
 				<h:outputText value="Allergen"></h:outputText>
 			</f:facet>
 			<h:outputText id="allergen" value="#{ingred.allergen}"></h:outputText>
@@ -52,7 +58,7 @@
 				<f:convertNumber type="currency"></f:convertNumber>
 			</h:outputText>
 			<h:form>
-				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
+				<h:inputText value=""></h:inputText>
 				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientPrice}">
 					<f:setPropertyActionListener
 						target="#{adminIngredientsPageViewBean.ingredId}"
@@ -75,6 +81,17 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">
+				<h:outputText value="Description " />
+			</f:facet>
+			<h:outputText value="#{ingred.description}" />
+			<h:form >
+				<h:inputText value="#{adminIngredientsPageViewBean.editText}">
+				</h:inputText>
+				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editDescFor(ingred)}" ></h:commandLink>
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
 				<h:outputText value="Action "></h:outputText>
 			</f:facet>
 			<h:form>
@@ -91,6 +108,10 @@
 						value="#{ingred.ingredientid}">
 					</f:setPropertyActionListener>
 				</h:commandLink>
+			</h:form>
+			<h:form enctype="multipart/form-data">
+				<h:inputFile value="#{adminIngredientsPageViewBean.file}"/>
+				<h:commandButton value="Submit" action="#{adminIngredientsPageViewBean.submitImageFor(ingred)}" />
 			</h:form>
 		</h:column>
 		<f:facet name="footer">

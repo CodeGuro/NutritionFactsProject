@@ -26,6 +26,7 @@ public class AdminFoodsPageViewBean
 	private int ingredId;
 	private String imgPath;
 	private Part file;
+	private String editText;
 	
 	public String addToMenu()
 	{
@@ -254,6 +255,14 @@ public class AdminFoodsPageViewBean
 		this.file = file;
 	}
 	
+	public String editDescFor( Food food )
+	{
+		food.setDescription( this.getEditText() );
+		resources.updateFood( food );
+		this.editText = "";
+		return "success";
+	}
+	
 	public String submitImageFor( Food food )
 	{
 		String basePath = Util.getBasePath();
@@ -278,6 +287,16 @@ public class AdminFoodsPageViewBean
 		food.setImgPath( Paths.get( "img", Util.getFileName( file.getSubmittedFileName() ) ).toString() );
 		resources.updateFood( food );
 		return "success";
+	}
+
+	public String getEditText()
+	{
+		return editText;
+	}
+
+	public void setEditText( String editText )
+	{
+		this.editText = editText;
 	}
 	
 }

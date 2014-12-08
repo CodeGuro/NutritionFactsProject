@@ -1,13 +1,20 @@
 package beans;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
+import javax.servlet.http.Part;
+
+import com.google.common.io.ByteStreams;
 
 import resources.Ingredient;
 import resources.Nutrition;
+import resources.Util;
 
 @Stateful
 @LocalBean
@@ -18,6 +25,7 @@ public class AdminIngredientsPageViewBean
 	private AdminSession sessionBean;
 	private int ingredId;
 	private String editText;
+	private Part file;
 	
 	public void setEditText( String editText )
 	{
@@ -129,4 +137,49 @@ public class AdminIngredientsPageViewBean
 		resources.removeIngredient( ingredId );
 		return "success";
 	}
+
+	public Part getFile()
+	{
+		return file;
+	}
+
+	public void setFile( Part file )
+	{
+		this.file = file;
+	}
+	
+	public String submitImageFor( Ingredient ingred )
+	{
+		String basePath = Util.getBasePath();
+		String filePath = Paths.get( basePath, Util.getFileName( file.getSubmittedFileName() ) ).toString();
+		
+		File saveFile = new File( filePath );
+		if( !saveFile.exists() )
+		{
+			try
+			{
+				saveFile.createNewFile();
+				FileOutputStream os = new FileOutputStream( saveFile );
+				ByteStreams.copy( file.getInputStream(), os );
+				os.close();
+			}
+			catch( Exception e )
+			{
+				e.printStackTrace();
+				return "failure";
+			}
+		}
+		ingred.setImgPath( Paths.get( "img", Util.getFileName( file.getSubmittedFileName() ) ).toString() );
+		resources.updateIngredient( ingred );
+		return "success";
+	}
+	
+	public String editDescFor( Ingredient ingred )
+	{
+		ingred.setDescription( editText );
+		resources.updateIngredient( ingred );
+		editText = "";
+		return "success";
+	}
+	
 }

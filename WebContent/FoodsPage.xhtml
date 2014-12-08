@@ -51,6 +51,10 @@
 				<h:outputText value="Description" />
 			</f:facet>
 			<h:outputText value="#{food.description}" />
+			<h:form>
+				<h:inputText value="#{adminFoodsPageViewBean.editText}" />
+				<h:commandLink value="edit" action="#{adminFoodsPageViewBean.editDescFor(food)}" />
+			</h:form>
 		</h:column>
 		
 		<h:column>

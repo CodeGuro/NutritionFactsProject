@@ -26,7 +26,7 @@ public class AdminMenusPageViewBean
 	private String menuName;
 	private String imgPath;
 	private Part file;
-	
+	private String editText;
 
 	public List< Food > getFoodsOnCurrentMenu()
 	{
@@ -202,5 +202,23 @@ public class AdminMenusPageViewBean
 		}
 
 		return result;
+	}
+	
+	public String setDescFor( Menu menu )
+	{
+		menu.setDescription( getEditText() );
+		setEditText( "" );
+		resources.updateMenu( menu );
+		return "success";
+	}
+
+	public String getEditText()
+	{
+		return editText;
+	}
+
+	public void setEditText( String editText )
+	{
+		this.editText = editText;
 	}
 }
