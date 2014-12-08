@@ -11,23 +11,32 @@
 <h:body styleClass="body">
 	<h:panelGrid columns="2">
 		<h:graphicImage url="/img/pg1swch.png" style="height: 96px; width: 180px; "></h:graphicImage>
-		<h:outputText value="Welcome to SixTwelve" style="font-size: xx-large; font-weight: bold"></h:outputText>
+		<h:outputText value="Welcome to SixTwelve" style='font-size: xx-large; font-weight: bold; font-family: "Comic Sans MS", Sans-Serif'></h:outputText>
 	</h:panelGrid>
 	<p/>
 	<h:form>
 		<div style="background-color: #32C800; display: inline-block">
 			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
-				<h:commandLink value="Menu" action="goToMenu"
+				<h:commandLink value="Menu" action="goToMainPage"
 					style="color: #E6FF32; padding-left: 20px; padding-right: 20px;" />
 			</div>
 			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
-				<h:commandLink value="Classic Build" action="goToClassicBuild" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
+				<h:commandLink value="Classic Build" action="goToClassicBuildPage" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
 			</div>
 			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
-				<h:commandLink value="Build Your Own" action="goToBuildYourOwn" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
+				<h:commandLink value="Build Your Own" action="goToBuildYourOwnPage" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
 			</div>
 		</div>
-		
 	</h:form>
+	<br/>
+	<div style="text-align:center; background-color: rgb(230,230,230); display: inline-block; text-decoration: underline overline; font-weight: normal; font-size: 16px">
+			<h:outputText value="Choose Type" style="color: #0000FF" />
+			&gt;
+			<h:outputText value="Customize your Sandwich" />
+			&gt;
+			<h:outputText value="Finalize your meal" />
+			&gt;
+			<h:outputText value="see nutrition score" />
+		</div>
 </h:body>
 </html>
