@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+<title>SixTwelve Main Page</title>
+<link rel="stylesheet" type="text/css" href="./style/mainpages.css"/>
+</head>
+<h:body styleClass="body">
+	<h:panelGrid columns="2">
+		<h:graphicImage url="/img/pg1swch.png" style="height: 96px; width: 180px; "></h:graphicImage>
+		<h:outputText value="Welcome to SixTwelve" style="font-size: xx-large; font-weight: bold"></h:outputText>
+	</h:panelGrid>
+	<p/>
+	<h:form>
+		<div style="background-color: #32C800; display: inline-block">
+			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
+				<h:commandLink value="Menu" action="goToMenu"
+					style="color: #E6FF32; padding-left: 20px; padding-right: 20px;" />
+			</div>
+			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
+				<h:commandLink value="Classic Build" action="goToClassicBuild" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
+			</div>
+			<div style="width:180px; text-align:center; display: inline-block; border-left-style: solid; border-right-width: thin; border-right-style: solid; border-left-width: thin; border-left-color: #000000; border-right-color: #000000; padding-bottom: 5px; padding-top: 5px">
+				<h:commandLink value="Build Your Own" action="goToBuildYourOwn" style="color: #E6FF32; padding-left: 20px; padding-right: 20px"/>
+			</div>
+		</div>
+		
+	</h:form>
+</h:body>
+</html>
