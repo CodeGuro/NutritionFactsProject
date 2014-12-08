@@ -6,6 +6,8 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 
+import resources.Food;
+import resources.Ingredient;
 import resources.Menu;
 
 /**
@@ -42,9 +44,31 @@ public class ClientSession
 
 	public String setSelectedMenu( Menu menuItem )
 	{
-		if( selectedMenu == null )
-			return "goToFoodCustomizationPage";
+		if( menuItem == null )
+			return "failure";
 		this.selectedMenu = menuItem;
-		return "success";
+		return "goToFoodCustomizationPage";
 	}
+	
+	public List< Food > getFoodsFromSelectedMenu()
+	{
+		return this.getSelectedMenu().getFoods();
+	}
+	
+	public String getAllergensFor( Food food )
+	{
+		String result = "";
+		String delim = "";
+		
+		for( Ingredient ingred : food.getIngredients() )
+		{
+			result += delim + ingred.getAllergen();
+			delim = ", ";
+		}
+		
+		if( result.length() == 0 )
+			result = "none";
+		return result;
+	}
+	
 }

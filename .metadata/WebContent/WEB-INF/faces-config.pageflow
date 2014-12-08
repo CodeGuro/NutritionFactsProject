@@ -10,8 +10,8 @@
   <nodes xsi:type="pageflow:PFPage" name="EditMenusPage.xhtml" x="672" y="84" id="pf14158359529271" referenceLink="//@navigationRule.20/@fromViewId|" outlinks="pf14161096295920" inlinks="pf14158359529270" path="/EditMenusPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditFoodsPage.xhtml" x="674" y="192" id="pf14158490239441" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf14159947329351" inlinks="pf14158490239440" path="/EditFoodsPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditNutritionalPage.xhtml" x="672" y="300" id="pf14159987740831" referenceLink="//@navigationRule.18/@fromViewId|" outlinks="pf14160004027252" inlinks="pf14159987740830" path="/EditNutritionalPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="MainPage.xhtml" x="138" y="333" id="pf14180072344020" outlinks="pf14180072344021" path="/MainPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="FoodCustomizationPage.xhtml" x="213" y="480" id="pf14180072344022" inlinks="pf14180072344021" path="/FoodCustomizationPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="MainPage.xhtml" x="138" y="333" id="pf14180072344020" referenceLink="//@navigationRule.21/@fromViewId|" outlinks="pf14180072344021" inlinks="pf14180188933200" path="/MainPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FoodCustomizationPage.xhtml" x="213" y="480" id="pf14180072344022" referenceLink="//@navigationRule.21/@navigationCase.0/@toViewId|" outlinks="pf14180188933200" inlinks="pf14180072344021" path="/FoodCustomizationPage.xhtml"/>
   <links id="pf14148793426529" target="pf141487934265211" source="pf14148793426528" outcome="success" fromaction="#{regBean.addUser}"/>
   <links id="pf141487934265210" target="pf14148793426528" source="pf14148793426528" outcome="failure" fromaction="#{regBean.addUser}">
     <bendPoints d1Width="-2" d1Height="-56" d2Width="-2" d2Height="-56"/>
@@ -58,4 +58,5 @@
   <links id="pf14160149012980" target="pf14154034979870" source="pf14154034979873" outcome="Logout"/>
   <links id="pf14161096295920" target="pf14155764248643" source="pf14158359529271" outcome="Return"/>
   <links id="pf14180072344021" target="pf14180072344022" source="pf14180072344020" outcome="goToFoodCustomizationPage" fromaction="#{clientSession.setSelectedMenu(menuItem)}"/>
+  <links id="pf14180188933200" target="pf14180072344020" source="pf14180072344022" outcome="goBack"/>
 </pageflow:Pageflow>

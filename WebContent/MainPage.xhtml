@@ -39,18 +39,21 @@
 		<h:outputText value="see nutrition score" />
 	</div>
 	<p/>
-	<h:form>
-		<h:dataTable id="d1" var="menuItem"
-			value="#{clientSession.menus}">
-			<h:column>
+
+	<h:dataTable style="text-align:center;" var="menuItem"
+		value="#{clientSession.menus}">
+		<h:column>
+			<h:form>
 				<h:commandButton image="#{menuItem.imgPath}"
 					style="width:150px;height:150px;"
 					action="#{clientSession.setSelectedMenu(menuItem)}"></h:commandButton>
-			</h:column>
-			<h:column>
-				<h:outputText id="menuName" value="#{menuItem.menuName}"></h:outputText>
-			</h:column>
-		</h:dataTable>
-	</h:form>
+					<br/>
+					<h:outputText value="#{menuItem.menuName}" style="background-position: center"/>
+			</h:form>
+		</h:column>
+		<h:column>
+			<h:outputText value="#{menuItem.description}"/>
+		</h:column>
+	</h:dataTable>
 </h:body>
 </html>
