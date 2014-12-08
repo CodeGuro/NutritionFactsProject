@@ -14,7 +14,7 @@ import resources.Nutrition;
 public class AdminIngredientsPageViewBean
 {
 	@EJB
-	private AdminResourceEAO resources;
+	private ResourceEAO resources;
 	private AdminSession sessionBean;
 	private int ingredId;
 	private String editText;
@@ -64,12 +64,12 @@ public class AdminIngredientsPageViewBean
 		}
 	}
 	
-	public AdminResourceEAO getResources()
+	public ResourceEAO getResources()
 	{
 		return resources;
 	}
 
-	public void setResources( AdminResourceEAO resources )
+	public void setResources( ResourceEAO resources )
 	{
 		this.resources = resources;
 	}

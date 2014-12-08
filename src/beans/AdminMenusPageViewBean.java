@@ -19,7 +19,7 @@ import resources.Menu;
 public class AdminMenusPageViewBean
 {
 	@EJB
-	private AdminResourceEAO resources;
+	private ResourceEAO resources;
 	private AdminSession adminSession;
 	private int menuId;
 	private String menuName;
@@ -57,12 +57,12 @@ public class AdminMenusPageViewBean
 	}
 
 	
-	public AdminResourceEAO getResources()
+	public ResourceEAO getResources()
 	{
 		return resources;
 	}
 
-	public void setResources( AdminResourceEAO resources )
+	public void setResources( ResourceEAO resources )
 	{
 		this.resources = resources;
 	}

@@ -30,13 +30,27 @@
 	</h:form>
 	<br/>
 	<div style="text-align:center; background-color: rgb(230,230,230); display: inline-block; text-decoration: underline overline; font-weight: normal; font-size: 16px">
-			<h:outputText value="Choose Type" style="color: #0000FF" />
-			&gt;
-			<h:outputText value="Customize your Sandwich" />
-			&gt;
-			<h:outputText value="Finalize your meal" />
-			&gt;
-			<h:outputText value="see nutrition score" />
-		</div>
+		<h:outputText value="Choose Type" style="color: #0000FF" />
+		&gt;
+		<h:outputText value="Customize your Sandwich" />
+		&gt;
+		<h:outputText value="Finalize your meal" />
+		&gt;
+		<h:outputText value="see nutrition score" />
+	</div>
+	<p/>
+	<h:form>
+		<h:dataTable id="d1" var="menuItem"
+			value="#{clientSession.menus}">
+			<h:column>
+				<h:commandButton image="#{menuItem.imgPath}"
+					style="width:150px;height:150px;"
+					action="#{clientSession.setSelectedMenu(menuItem)}"></h:commandButton>
+			</h:column>
+			<h:column>
+				<h:outputText id="menuName" value="#{menuItem.menuName}"></h:outputText>
+			</h:column>
+		</h:dataTable>
+	</h:form>
 </h:body>
 </html>

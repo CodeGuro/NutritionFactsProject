@@ -20,7 +20,7 @@ import resources.Nutrition;
  */
 @Stateless
 @LocalBean
-public class AdminResourceEAO
+public class ResourceEAO
 {
 	@PersistenceContext( type = PersistenceContextType.TRANSACTION )
 	private EntityManager em;

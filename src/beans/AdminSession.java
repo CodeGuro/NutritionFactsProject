@@ -12,17 +12,17 @@ import resources.Nutrition;
 public class AdminSession
 {
 	@EJB
-	private AdminResourceEAO resources;
+	private ResourceEAO resources;
 	private Menu workingMenu;
 	private Food workingFood;
 	private Ingredient workingIngredient;
 
-	public AdminResourceEAO getResources()
+	public ResourceEAO getResources()
 	{
 		return resources;
 	}
 
-	public void setResources( AdminResourceEAO resources )
+	public void setResources( ResourceEAO resources )
 	{
 		this.resources = resources;
 	}

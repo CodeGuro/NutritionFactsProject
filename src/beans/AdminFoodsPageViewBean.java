@@ -12,7 +12,7 @@ import resources.Menu;
 public class AdminFoodsPageViewBean
 {
 	@EJB
-	private AdminResourceEAO resources;
+	private ResourceEAO resources;
 	private AdminSession sessionBean;
 	private String foodName;
 	private int foodId;
@@ -47,12 +47,12 @@ public class AdminFoodsPageViewBean
 		return "failure";
 	}
 	
-	public AdminResourceEAO getResources()
+	public ResourceEAO getResources()
 	{
 		return resources;
 	}
 
-	public void setResources( AdminResourceEAO resources )
+	public void setResources( ResourceEAO resources )
 	{
 		this.resources = resources;
 	}

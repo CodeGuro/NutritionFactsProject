@@ -61,6 +61,11 @@
 			<value>#{adminSession}</value>
 		</managed-property>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>clientSession</managed-bean-name>
+		<managed-bean-class>beans.ClientSession</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<validator>
 	<display-name>Password Validator</display-name>
 	<validator-id>passwordValidator</validator-id>

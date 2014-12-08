@@ -22,7 +22,7 @@ public class AdminNutritionalFactsPageViewBean
 	private int cholesterol;
 	
 	@EJB
-	AdminResourceEAO resources;
+	ResourceEAO resources;
 	
 	private AdminSession sessionBean;
 	
