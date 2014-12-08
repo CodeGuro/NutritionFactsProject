@@ -42,9 +42,9 @@ public class ClientSession
 
 	public String setSelectedMenu( Menu menuItem )
 	{
-		System.out.println("success!");
 		if( selectedMenu == null )
-			return "failure";
+			return "goToFoodCustomizationPage";
+		this.selectedMenu = menuItem;
 		return "success";
 	}
 }

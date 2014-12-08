@@ -255,4 +255,13 @@
 			<to-view-id>/MenusPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>MainPage.xhtml</display-name>
+		<from-view-id>/MainPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{clientSession.setSelectedMenu(menuItem)}</from-action>
+			<from-outcome>goToFoodCustomizationPage</from-outcome>
+			<to-view-id>/FoodCustomizationPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
