@@ -58,7 +58,7 @@
 				<f:convertNumber type="currency"></f:convertNumber>
 			</h:outputText>
 			<h:form>
-				<h:inputText value=""></h:inputText>
+				<h:inputText value="#{adminIngredientsPageViewBean.editText}"></h:inputText>
 				<h:commandLink value="Edit" action="#{adminIngredientsPageViewBean.editIngredientPrice}">
 					<f:setPropertyActionListener
 						target="#{adminIngredientsPageViewBean.ingredId}"
