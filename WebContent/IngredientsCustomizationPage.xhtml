@@ -3,10 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-<title>Insert title here</title>
-</head>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 <title>Client Food Customization Page</title>
@@ -15,23 +12,101 @@
 
 
 <h:body styleClass="body">
+
 	<h:panelGrid columns="2">
 		<h:graphicImage url="/img/pg1swch.png" style="height: 96px; width: 180px; "></h:graphicImage>
 		<h:outputText value="SixTwelve - customize your ingredients" style='font-size: xx-large; font-weight: bold; font-family: "Comic Sans MS", Sans-Serif'></h:outputText>
 	</h:panelGrid>
 	<h:form>
 		<div style="text-align:center; background-color: rgb(230,230,230); display: inline-block; text-decoration: underline overline; font-weight: normal; font-size: 16px">
-			<h:commandLink value="Choose Type" action= "goBack" style="color: #0000FF" />
+			<h:commandLink value="Choose Type" action= "goToMain" style="color: #0000FF" />
 			&gt;
-			<h:outputText value="Customize your Sandwich" style="color: #0000FF" />
+			<h:commandLink value="Customize your Sandwich" action="goBack" style="color: #0000FF" />
 			&gt;
-			<h:outputText value="Finalize your meal" />
+			<h:outputText value="Finalize your meal" style="color: #0000FF" />
 			&gt;
 			<h:outputText value="see nutrition score" />
 		</div>	
 	</h:form>
+	<br/>
+	<h:form>
+		<h:commandButton value = "return to Foods" action="goBack" />
+	</h:form>
 	<p/>
-	
-	
 
+	<h:dataTable var="ingred" style="text-align:center;"
+		value="#{clientSession.ingredientsFromSelectedFood}">
+		<f:facet name="header">
+			<h:outputText value="Included Ingredients"></h:outputText>
+		</f:facet>
+		<h:column >
+			<h:graphicImage width="100" height="100" value="#{ingred.imgPath}"/>
+			<br/>
+			<h:outputText value="#{ingred.ingredName}" />
+			<br/>
+			<h:form>
+				<h:commandLink value="remove" action="#{clientSession.removeIngredient(ingred)}" />
+			</h:form>
+		</h:column>		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Description" />
+			</f:facet>
+			<h:outputText value="#{ingred.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Allergen" />
+			</f:facet>
+			<h:outputText value="#{ingred.allergen}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText  value="Price" />
+			</f:facet>
+			<h:outputText value="#{ingred.price}">
+				<f:convertNumber type="currency" />
+			</h:outputText>
+		</h:column>
+	</h:dataTable>
+	
+	<p/>
+
+	<h:dataTable var="ingred" style="text-align:center;" value="#{clientSession.omittedIngredientsFromSelectedFood}">
+		<f:facet name="header">
+			<h:outputText value="Omitted Ingredients"></h:outputText>
+		</f:facet>
+		<h:column>
+			<h:graphicImage width="100" height="100" value="#{ingred.imgPath}" />
+			<br />
+			<h:outputText value="#{ingred.ingredName}" />
+			<br />
+			<h:form>
+				<h:commandLink value="add"
+					action="#{clientSession.addIngredient(ingred)}" />
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Description" />
+			</f:facet>
+			<h:outputText value="#{ingred.description}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Allergen" />
+			</f:facet>
+			<h:outputText value="#{ingred.allergen}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Price" />
+			</f:facet>
+			<h:outputText value="#{ingred.price}">
+				<f:convertNumber type="currency" />
+			</h:outputText>
+		</h:column>
+	</h:dataTable>
+
+</h:body>	
 </html>

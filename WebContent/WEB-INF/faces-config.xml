@@ -268,7 +268,56 @@
 		<display-name>FoodCustomizationPage.xhtml</display-name>
 		<from-view-id>/FoodCustomizationPage.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>goToMain</from-outcome>
+			<to-view-id>/MainPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodCustomizationPage.xhtml</display-name>
+		<from-view-id>/FoodCustomizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{clientSession.setSelectedFood(food)}</from-action>
+			<from-outcome>goToIngredientCustomizationPage</from-outcome>
+			<to-view-id>/IngredientsCustomizationPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>IngredientsCustomizationPage.xhtml</display-name>
+		<from-view-id>/IngredientsCustomizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goToMain</from-outcome>
+			<to-view-id>/MainPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>IngredientsCustomizationPage.xhtml</display-name>
+		<from-view-id>/IngredientsCustomizationPage.xhtml</from-view-id>
+		<navigation-case>
 			<from-outcome>goBack</from-outcome>
+			<to-view-id>/FoodCustomizationPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FoodCustomizationPage.xhtml</display-name>
+		<from-view-id>/FoodCustomizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>GoToFinalizationPage</from-outcome>
+			<to-view-id>/FinalizationPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FinalizationPage.xhtml</display-name>
+		<from-view-id>/FinalizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goBack</from-outcome>
+			<to-view-id>/FoodCustomizationPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>FinalizationPage.xhtml</display-name>
+		<from-view-id>/FinalizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goToMain</from-outcome>
 			<to-view-id>/MainPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>

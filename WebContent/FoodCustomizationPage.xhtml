@@ -15,7 +15,7 @@
 	</h:panelGrid>
 	<h:form>
 		<div style="text-align:center; background-color: rgb(230,230,230); display: inline-block; text-decoration: underline overline; font-weight: normal; font-size: 16px">
-			<h:commandLink value="Choose Type" action= "goBack" style="color: #0000FF" />
+			<h:commandLink value="Choose Type" action= "goToMain" style="color: #0000FF" />
 			&gt;
 			<h:outputText value="Customize your Sandwich" style="color: #0000FF" />
 			&gt;
@@ -23,6 +23,10 @@
 			&gt;
 			<h:outputText value="see nutrition score" />
 		</div>
+	</h:form>
+	<br/>
+	<h:form>
+		<h:commandButton value="Finish" action="GoToFinalizationPage"/>
 	</h:form>
 	<p/>
 	

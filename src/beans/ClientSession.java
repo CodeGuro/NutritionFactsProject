@@ -189,8 +189,31 @@ public class ClientSession
 		return "failure";
 	}
 	
-	public List< Ingredient > getIncludedIngredientsFromSelectedFood()
+	public List< Ingredient > getIngredientsFromSelectedFood()
 	{
+		List< Ingredient > result = new ArrayList< Ingredient >();
+		
+		for( IngredientContainer ingred : selectedFood.getIngredients() )
+		{
+			if( ingred.included )
+				result.add( ingred.getIngredient() );
+		}
+		
+		return result;
+	}
+	
+	public List< Ingredient > getIngredientsFromFood( Food food )
+	{
+		for( FoodContainer ct : selectedMenu.getFoods() )
+		{
+			if( ct.getFood().getFoodid() == food.getFoodid() )
+			{
+				this.selectedFood = ct;
+				break;
+			}
+		}
+		
+		
 		List< Ingredient > result = new ArrayList< Ingredient >();
 		
 		for( IngredientContainer ingred : selectedFood.getIngredients() )
@@ -213,6 +236,32 @@ public class ClientSession
 		}
 		
 		return result;
+	}
+	
+	public String addIngredient( Ingredient ing )
+	{
+		for( IngredientContainer ct : selectedFood.getIngredients() )
+		{
+			if( ing.getIngredientid() == ct.getIngredient().getIngredientid() )
+			{
+				ct.included = true;
+				return "success";
+			}
+		}
+		return "failure";
+	}
+	
+	public String removeIngredient( Ingredient ing )
+	{
+		for( IngredientContainer ct : selectedFood.getIngredients() )
+		{
+			if( ing.getIngredientid() == ct.getIngredient().getIngredientid() )
+			{
+				ct.included = false;
+				return "success";
+			}
+		}
+		return "failure";
 	}
 	
 }
