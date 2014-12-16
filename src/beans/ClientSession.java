@@ -62,12 +62,15 @@ public class ClientSession
 		
 		for( Ingredient ingred : food.getIngredients() )
 		{
-			result += delim + ingred.getAllergen();
-			delim = ", ";
+			if( ingred.getAllergen() != null )
+			{
+				result += delim + ingred.getAllergen();
+				delim = ", ";
+			}
 		}
 		
 		if( result.length() == 0 )
-			result = "none";
+			result = "no allergens";
 		return result;
 	}
 	
