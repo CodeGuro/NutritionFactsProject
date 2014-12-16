@@ -25,6 +25,8 @@
 		</div>
 	</h:form>
 	<p/>
+	
+	<h:outputText value="Select Food to Customize" style='font-size: x-large; font-weight: bold; font-family: "Comic Sans MS", Sans-Serif'></h:outputText>
 
 	<h:dataTable style="text-align:center;" var="food"
 		value="#{clientSession.foodsFromSelectedMenu}" >
@@ -43,6 +45,13 @@
 				<h:outputText value="allergens" />
 			</f:facet>
 			<h:outputText value="#{clientSession.getAllergensFor(food)}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="description" />
+			</f:facet>
+			<h:outputText value="#{food.description}" />
 		</h:column>
 	</h:dataTable>
 
