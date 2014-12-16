@@ -37,7 +37,38 @@
 			<h:graphicImage value="#{food.imgPath}" width="100" height="100" />
 			<br/>
 			<h:form>
-				<h:commandLink value="#{food.foodName}" action="PLACEHOLDER"/>
+				<h:commandLink value="#{food.foodName}" action="#{clientSession.setSelectedFood(food)}"/>
+				<br/><br/>
+				<h:commandLink value="remove this food" action="#{clientSession.removeFood(food)}"/>
+			</h:form>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="allergens" />
+			</f:facet>
+			<h:outputText value="#{clientSession.getAllergensFor(food)}" />
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="description" />
+			</f:facet>
+			<h:outputText value="#{food.description}" />
+		</h:column>
+	</h:dataTable>
+	
+	<h:dataTable style="text-align:center;" var="food"
+		value="#{clientSession.omittedFoodsFromSelectedMenu}" >
+		<f:facet name="header">
+			<h:outputText value="Foods Omitted" />
+		</f:facet>
+		<h:column>
+			<h:graphicImage value="#{food.imgPath}" width="100" height="100" />
+			<br/>
+			<h:outputText value="#{food.foodName}" />
+			<br/><br/>
+			<h:form>
+				<h:commandLink value="add this food" action="#{clientSession.addFood(food)}" />
 			</h:form>
 		</h:column>
 		<h:column>
