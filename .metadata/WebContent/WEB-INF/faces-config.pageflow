@@ -10,10 +10,11 @@
   <nodes xsi:type="pageflow:PFPage" name="EditMenusPage.xhtml" x="672" y="84" id="pf14158359529271" referenceLink="//@navigationRule.20/@fromViewId|" outlinks="pf14161096295920" inlinks="pf14158359529270" path="/EditMenusPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditFoodsPage.xhtml" x="674" y="192" id="pf14158490239441" referenceLink="//@navigationRule.13/@fromViewId|" outlinks="pf14159947329351" inlinks="pf14158490239440" path="/EditFoodsPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="EditNutritionalPage.xhtml" x="672" y="300" id="pf14159987740831" referenceLink="//@navigationRule.18/@fromViewId|" outlinks="pf14160004027252" inlinks="pf14159987740830" path="/EditNutritionalPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="MainPage.xhtml" x="138" y="333" id="pf14180072344020" referenceLink="//@navigationRule.24/@navigationCase.0/@toViewId|" outlinks="pf14180072344021" inlinks="pf14180188933200 pf14187692229430 pf14187714361816" path="/MainPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="FoodCustomizationPage.xhtml" x="213" y="480" id="pf14180072344022" referenceLink="//@navigationRule.25/@navigationCase.0/@toViewId|" outlinks="pf14180188933200 pf14187692229441 pf14187711131474" inlinks="pf14180072344021 pf14187698894343 pf14187714361817" path="/FoodCustomizationPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="MainPage.xhtml" x="138" y="333" id="pf14180072344020" referenceLink="//@navigationRule.28/@navigationCase.0/@toViewId|" outlinks="pf14180072344021" inlinks="pf14180188933200 pf14187692229430 pf14187714361816 pf141877308644610" path="/MainPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FoodCustomizationPage.xhtml" x="213" y="480" id="pf14180072344022" referenceLink="//@navigationRule.27/@navigationCase.0/@toViewId|" outlinks="pf14180188933200 pf14187692229441 pf14187711131474" inlinks="pf14180072344021 pf14187698894343 pf14187714361817" path="/FoodCustomizationPage.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="IngredientsCustomizationPage.xhtml" x="552" y="504" id="pf14187692229442" referenceLink="//@navigationRule.25/@fromViewId|" outlinks="pf14187692229430 pf14187698894343" inlinks="pf14187692229441" path="/IngredientsCustomizationPage.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="FinalizationPage.xhtml" x="254" y="612" id="pf14187711131475" outlinks="pf14187714361817 pf14187714361816" inlinks="pf14187711131474" path="/FinalizationPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="FinalizationPage.xhtml" x="254" y="612" id="pf14187711131475" referenceLink="//@navigationRule.28/@fromViewId|" outlinks="pf14187714361817 pf14187714361816 pf14187730449498" inlinks="pf14187711131474" path="/FinalizationPage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="NutritionPage.xhtml" x="127" y="768" id="pf14187730449499" outlinks="pf141877308644610" inlinks="pf14187730449498" path="/NutritionPage.xhtml"/>
   <links id="pf14148793426529" target="pf141487934265211" source="pf14148793426528" outcome="success" fromaction="#{regBean.addUser}"/>
   <links id="pf141487934265210" target="pf14148793426528" source="pf14148793426528" outcome="failure" fromaction="#{regBean.addUser}">
     <bendPoints d1Width="-2" d1Height="-56" d2Width="-2" d2Height="-56"/>
@@ -67,4 +68,6 @@
   <links id="pf14187711131474" target="pf14187711131475" source="pf14180072344022" outcome="GoToFinalizationPage"/>
   <links id="pf14187714361817" target="pf14180072344022" source="pf14187711131475" outcome="goBack"/>
   <links id="pf14187714361816" target="pf14180072344020" source="pf14187711131475" outcome="goToMain"/>
+  <links id="pf14187730449498" target="pf14187730449499" source="pf14187711131475" outcome="goToNutritionPage"/>
+  <links id="pf141877308644610" target="pf14180072344020" source="pf14187730449499" outcome="goToMain"/>
 </pageflow:Pageflow>

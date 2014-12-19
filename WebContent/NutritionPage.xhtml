@@ -30,6 +30,38 @@
 	</h:form>
 	<p/>
 
+	<h:panelGrid id="p1" columns="2" border="1">
+		<f:facet name="header">
+			<h:outputText id="o1" value="Nutritional Facts"></h:outputText>
+		</f:facet>
+		<h:outputText id="o2" value="Calories:"></h:outputText>
+		<h:outputText id="nutritionFacts_calories"
+			value="#{clientSession.nutritionFacts.calories}"></h:outputText>
+		<h:outputText id="o3" value="Fat:"></h:outputText>
+		<h:outputText id="nutritionFacts_fat"
+			value="#{clientSession.nutritionFacts.fat}"></h:outputText>
+		<h:outputText id="o4" value="Cholesterol:"></h:outputText>
+		<h:outputText id="nutritionFacts_cholesterol"
+			value="#{clientSession.nutritionFacts.cholesterol}"></h:outputText>
+		<h:outputText id="o5" value="Carbohydrates:"></h:outputText>
+		<h:outputText id="nutritionFacts_carbohydrates"
+			value="#{clientSession.nutritionFacts.carbohydrates}"></h:outputText>
+		<h:outputText id="o6" value="Sodium:"></h:outputText>
+		<h:outputText id="nutritionFacts_sodium"
+			value="#{clientSession.nutritionFacts.sodium}"></h:outputText>
+		<h:outputText id="o7" value="Sugar:"></h:outputText>
+		<h:outputText id="nutritionFacts_sugar"
+			value="#{clientSession.nutritionFacts.sugar}"></h:outputText>
+		<h:outputText id="o8" value="Protein:"></h:outputText>
+		<h:outputText id="nutritionFacts_protein"
+			value="#{clientSession.nutritionFacts.protein}"></h:outputText>
+		<f:facet name="footer">
+			<h:outputText id="o9" value="price: "/>
+			<h:outputText value="#{clientSession.price}">
+				<f:convertNumber type="currency" />
+			</h:outputText>
+		</f:facet>
+	</h:panelGrid>
 
 </h:body>
 

@@ -10,6 +10,7 @@ import javax.ejb.Stateful;
 import resources.Food;
 import resources.Ingredient;
 import resources.Menu;
+import resources.Nutrition;
 
 /**
  * Session Bean implementation class ClientSession
@@ -77,6 +78,7 @@ public class ClientSession
 	
 	private MenuContainer selectedMenu;
 	private FoodContainer selectedFood;
+	private double price;
 
 	public ResourceEAO getResources()
 	{
@@ -262,6 +264,41 @@ public class ClientSession
 			}
 		}
 		return "failure";
+	}
+	
+	public Nutrition getNutritionFacts()
+	{
+		Nutrition nutrition = new Nutrition();
+		this.price = 0.0;
+		
+		for( FoodContainer foodct : selectedMenu.getFoods() )
+		{
+			if( foodct.included )
+			{
+				for( IngredientContainer ingredct : foodct.getIngredients() )
+				{
+					if( ingredct.included )
+					{
+						Nutrition current = ingredct.getIngredient().getNutrition();
+						nutrition.setCalories( nutrition.getCalories() + current.getCalories() );
+						nutrition.setFat( nutrition.getFat() + current.getFat() );
+						nutrition.setCholesterol( nutrition.getCholesterol() + current.getCholesterol() );
+						nutrition.setCarbohydrates( nutrition.getCarbohydrates() + current.getCarbohydrates() );
+						nutrition.setSodium( nutrition.getSodium() + current.getSodium() );
+						nutrition.setSugar( nutrition.getSugar() + current.getSugar() );
+						nutrition.setProtein( nutrition.getProtein() + current.getProtein() );
+						price += ingredct.getIngredient().getPrice();
+					}
+				}
+			}
+		}
+		
+		return nutrition;
+	}
+	
+	public double getPrice()
+	{
+		return price;
 	}
 	
 }

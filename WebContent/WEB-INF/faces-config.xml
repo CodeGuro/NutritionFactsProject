@@ -321,4 +321,20 @@
 			<to-view-id>/MainPage.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<display-name>FinalizationPage.xhtml</display-name>
+		<from-view-id>/FinalizationPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goToNutritionPage</from-outcome>
+			<to-view-id>/NutritionPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>NutritionPage.xhtml</display-name>
+		<from-view-id>/NutritionPage.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>goToMain</from-outcome>
+			<to-view-id>/MainPage.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
